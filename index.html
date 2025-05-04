@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portafolio de Andrés Martínez, ingeniero informático especializado en desarrollo full-stack, aplicaciones Java y redes.">
+  <meta name="description" content="Portafolio de Andrés Martínez, estudiante de Ingeniería Informática en la Universidad de Murcia, especializado en desarrollo full-stack, software e IA.">
+  <meta name="keywords" content="Andrés Martínez, ingeniero informático, desarrollo full-stack, software, IA, portafolio, Universidad de Murcia">
+  <meta name="author" content="Andrés Martínez Lorca">
   <title>Portafolio de Andrés Martínez</title>
+  <link rel="preload" href="./assets/images/yo.jpg" as="image">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -100,6 +103,11 @@
       transform: scale(1.3);
       filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.7));
     }
+    .contact-icon:focus {
+      transform: scale(1.3);
+      filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.7));
+      outline: none;
+    }
     .skill-tag {
       background: rgba(59, 130, 246, 0.2);
       border: 1px solid rgba(59, 130, 246, 0.5);
@@ -155,8 +163,10 @@
       cursor: pointer;
       transition: color 0.3s ease;
     }
-    .close-btn:hover {
+    .close-btn:hover,
+    .close-btn:focus {
       color: #3b82f6;
+      outline: none;
     }
     .modal-content h3 {
       color: #3b82f6;
@@ -172,6 +182,18 @@
     .modal-content a:hover {
       color: #60a5fa;
     }
+    /* Estilos para la sección de experiencia */
+    .experience-item {
+      background: rgba(20, 20, 40, 0.9);
+      border-left: 4px solid rgba(59, 130, 246, 0.6);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 0 8px 8px 0;
+      transition: transform 0.3s ease;
+    }
+    .experience-item:hover {
+      transform: translateX(10px);
+    }
   </style>
 </head>
 <body>
@@ -185,6 +207,7 @@
         <h1 class="text-2xl font-bold text-blue-400">Andrés Martínez</h1>
         <div class="flex space-x-6">
           <a href="#sobre-mi" class="text-gray-300 hover:text-blue-400 transition glow-btn py-2 px-4">Sobre mí</a>
+          <a href="#experiencia" class="text-gray-300 hover:text-blue-400 transition glow-btn py-2 px-4">Experiencia</a>
           <a href="#habilidades" class="text-gray-300 hover:text-blue-400 transition glow-btn py-2 px-4">Habilidades</a>
           <a href="#proyectos" class="text-gray-300 hover:text-blue-400 transition glow-btn py-2 px-4">Proyectos</a>
           <a href="#contacto" class="text-gray-300 hover:text-blue-400 transition glow-btn py-2 px-4">Contacto</a>
@@ -200,7 +223,7 @@
         Andrés Martínez
       </h1>
       <p class="text-xl md:text-3xl mb-8 hero-text">
-        Ingeniero Informático | <span id="typed-text" class="text-blue-400"></span>
+        Estudiante de Ingeniería Informática | <span id="typed-text" class="text-blue-400"></span>
       </p>
       <a href="#proyectos" class="glow-btn inline-block bg-blue-600 text-white font-semibold py-3 px-10 rounded-full text-lg">
         Ver Mis Proyectos
@@ -214,15 +237,42 @@
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 section-title text-blue-300">Sobre mí</h2>
       <div class="flex flex-col md:flex-row items-center gap-12">
         <div class="md:w-1/2">
-          <img src="https://via.placeholder.com/500" alt="Andrés Martínez" class="rounded-2xl about-image mx-auto" style="filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5));">
+          <img src="./assets/images/yo.jpg" alt="Andrés Martínez" class="rounded-2xl about-image mx-auto" style="filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5));">
         </div>
         <div class="md:w-1/2 about-text">
           <p class="text-lg leading-relaxed mb-4 text-gray-300">
-            Soy Andrés Martínez, un ingeniero informático apasionado por desarrollar soluciones innovadoras y eficientes. Mi experiencia abarca desarrollo full-stack, aplicaciones Java y protocolos de red, siempre enfocándome en crear sistemas escalables y amigables para el usuario. He trabajado en proyectos complejos como aplicaciones de mensajería en tiempo real, plataformas de aprendizaje y sitios web de comercio electrónico seguros, priorizando código limpio y patrones de diseño robustos.
+            Soy Andrés Martínez, estudiante de Ingeniería Informática en la Universidad de Murcia, donde estoy finalizando mi tercer año (2022 - presente). Mi objetivo es graduarme con una mención en Software o Inteligencia Artificial, áreas que me apasionan y en las que he desarrollado proyectos como los que puedes ver en esta página. Mi experiencia incluye desarrollo full-stack, creación de aplicaciones innovadoras y aprendizaje constante de nuevas tecnologías.
           </p>
-          <p class="text-lg leading-relaxed text-gray-300">
-            Motivado por la curiosidad y el amor por resolver problemas, prospero en desafíos que llevan mis habilidades técnicas al límite. Ya sea diseñando un protocolo de red personalizado o creando una interfaz responsiva, estoy comprometido con la excelencia. ¡Construyamos algo extraordinario juntos!
+          <p class="text-lg leading-relaxed mb-6 text-gray-300">
+            Estoy motivado por resolver problemas complejos y crear soluciones que impacten positivamente. En junio de 2025, realizaré prácticas en Odins Solutions, una empresa de Murcia enfocada en soluciones agrícolas tecnológicas, donde trabajaré de forma remota en proyectos de software e IA. ¡Estoy emocionado por seguir creciendo y contribuir a proyectos tecnológicos extraordinarios!
           </p>
+          <a href="./assets/files/cv-andres-martinez.pdf" download class="glow-btn inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-full text-lg">
+            Descargar CV
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Experiencia -->
+  <section id="experiencia" class="py-32 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 section-title text-blue-300">Experiencia</h2>
+      <div class="max-w-3xl mx-auto">
+        <div class="experience-item">
+          <h3 class="text-xl font-semibold text-blue-300">Estudiante de Ingeniería Informática</h3>
+          <p class="text-gray-400 mb-2">Universidad de Murcia, 2022 - Presente</p>
+          <p class="text-gray-300">Actualmente en tercer año, con un enfoque en Software e Inteligencia Artificial. He trabajado en proyectos académicos como un compilador en Python, un sistema de aprendizaje interactivo y aplicaciones de mensajería en tiempo real, aplicando conceptos de desarrollo de software y redes.</p>
+        </div>
+        <div class="experience-item">
+          <h3 class="text-xl font-semibold text-blue-300">Prácticas en Software e IA</h3>
+          <p class="text-gray-400 mb-2">Odins Solutions, Murcia (Remoto), Junio 2025</p>
+          <p class="text-gray-300">Próximas prácticas en una empresa líder en soluciones agrícolas tecnológicas. Me encargaré de desarrollar y optimizar software, además de explorar aplicaciones de inteligencia artificial para mejorar procesos agrícolas.</p>
+        </div>
+        <div class="experience-item">
+          <h3 class="text-xl font-semibold text-blue-300">Desarrollador Full-Stack - Regalos Ana Fátima</h3>
+          <p class="text-gray-400 mb-2">Socovos, Albacete, 2024</p>
+          <p class="text-gray-300">Desarrollé desde cero la página web de una tienda de regalos, implementando gestión de bases de datos para usuarios y pedidos, un sistema de login/register, carrito de compras y pagos seguros mediante RedSys. Este proyecto me permitió aprender y aplicar habilidades de desarrollo full-stack, trabajando tanto en el frontend como en el backend.</p>
         </div>
       </div>
     </div>
@@ -242,17 +292,11 @@
         <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">C</span>
         <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">C++</span>
         <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">SQL</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Maven</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Swing</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">JavaFX</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Apache HTTP</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">RedSys</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Cisco Packet Tracer</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">DNS</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">SMTP/POP</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">IPsec</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">JSON/YAML</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Wireshark</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">MySQL</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Full-Stack Development</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Excel</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Git</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">IA Fundamentals</span>
       </div>
     </div>
   </section>
@@ -264,79 +308,79 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- AppChat -->
         <div class="project-card rounded-2xl overflow-hidden">
-          <img src="https://via.placeholder.com/500x300" alt="AppChat">
+          <img src="./assets/images/appchat.png" alt="Captura de pantalla de la aplicación AppChat" class="h-[200px] w-full object-cover" loading="lazy">
           <div class="p-6 content">
             <div>
               <h3 class="text-2xl font-semibold mb-2 text-blue-300">AppChat</h3>
-              <p class="text-gray-300 mb-4">Una aplicación de mensajería en tiempo real inspirada en WhatsApp, desarrollada en Java con Maven y Swing. Incluye chats grupales, mensajes directos, soporte para emojis, búsqueda de mensajes y exportación de chats en PDF. Diseñada con patrones como MVC para escalabilidad y mantenibilidad.</p>
+              <p class="text-gray-300 mb-4">Una aplicación de mensajería en tiempo real inspirada en WhatsApp, desarrollada en Java. Incluye chats grupales, mensajes directos, soporte para emojis, búsqueda de mensajes y exportación de chats en PDF. Diseñada con patrones como MVC para escalabilidad y mantenibilidad.</p>
             </div>
-            <button onclick="openModal('appchat')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto">Ver Detalles</button>
+            <button onclick="openModal('appchat')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
           </div>
         </div>
         <!-- LinguaLearn -->
         <div class="project-card rounded-2xl overflow-hidden">
-          <img src="https://via.placeholder.com/500x300" alt="LinguaLearn">
+          <img src="./assets/images/lingualearn.png" alt="Captura de pantalla de la plataforma LinguaLearn" class="h-[200px] w-full object-cover" loading="lazy">
           <div class="p-6 content">
             <div>
               <h3 class="text-2xl font-semibold mb-2 text-blue-300">LinguaLearn</h3>
-              <p class="text-gray-300 mb-4">Una plataforma de aprendizaje similar a Duolingo, desarrollada en Java con JavaFX. Soporta creadores y estudiantes, con tipos de preguntas extensibles, estrategias de aprendizaje (secuencial, repetición espaciada, aleatoria), guardado de progreso, estadísticas de uso y compartición de cursos vía JSON/YAML. Los creadores pueden ser seguidos para inscribirse automáticamente en sus cursos.</p>
+              <p class="text-gray-300 mb-4">Una plataforma de aprendizaje similar a Duolingo, desarrollada en Java. Soporta creadores y estudiantes, con tipos de preguntas extensibles, estrategias de aprendizaje (secuencial, repetición espaciada, aleatoria), guardado de progreso y estadísticas de uso. Los creadores pueden ser seguidos para inscribirse automáticamente en sus cursos.</p>
             </div>
-            <button onclick="openModal('lingualearn')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto">Ver Detalles</button>
+            <button onclick="openModal('lingualearn')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
           </div>
         </div>
         <!-- Regalos Ana Fátima -->
         <div class="project-card rounded-2xl overflow-hidden">
-          <img src="https://via.placeholder.com/500x300" alt="Regalos Ana Fátima">
+          <img src="./assets/images/regalos.png" alt="Captura de pantalla del sitio web Regalos Ana Fátima" class="h-[200px] w-full object-cover" loading="lazy">
           <div class="p-6 content">
             <div>
               <h3 class="text-2xl font-semibold mb-2 text-blue-300">Regalos Ana Fátima</h3>
               <p class="text-gray-300 mb-4">Una plataforma de comercio electrónico full-stack para venta de regalos, construida desde cero con HTML, CSS, JavaScript y PHP. Incluye diseño responsivo, carrito de compras y pagos seguros vía RedSys. Optimizada para rendimiento y experiencia de usuario en todos los dispositivos.</p>
             </div>
-            <button onclick="openModal('regalosana')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto">Ver Detalles</button>
+            <button onclick="openModal('regalosana')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
           </div>
         </div>
         <!-- NanoFiles -->
         <div class="project-card rounded-2xl overflow-hidden">
-          <img src="https://via.placeholder.com/500x300" alt="NanoFiles">
+          <img src="./assets/images/nanofiles.png" alt="Captura de pantalla del sistema NanoFiles" class="h-[200px] w-full object-cover" loading="lazy">
           <div class="p-6 content">
             <div>
               <h3 class="text-2xl font-semibold mb-2 text-blue-300">NanoFiles</h3>
-              <p class="text-gray-300 mb-4">Un sistema de compartición de archivos peer-to-peer en Java, con protocolos personalizados UDP y TCP. Incluye un servidor de directorio y clientes/servidores, soportando inicio de sesión, listado de usuarios, publicación de archivos, descargas multi-hilo y asignación dinámica de puertos. Implementadas todas las mejoras opcionales para máxima funcionalidad.</p>
+              <p class="text-gray-300 mb-4">Un sistema de compartición de archivos peer-to-peer en Java, con protocolos personalizados UDP y TCP. Incluye un servidor de directorio y clientes/servidores, soportando inicio de sesión, listado de usuarios, publicación de archivos y descargas multi-hilo.</p>
             </div>
-            <button onclick="openModal('nanofiles')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto">Ver Detalles</button>
+            <button onclick="openModal('nanofiles')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
           </div>
         </div>
         <!-- Servicios Telemáticos -->
         <div class="project-card rounded-2xl overflow-hidden">
-          <img src="https://via.placeholder.com/500x300" alt="Servicios Telemáticos">
+          <img src="./assets/images/sstt.png" alt="Captura de pantalla del proyecto Servicios Telemáticos" class="h-[200px] w-full object-cover" loading="lazy">
           <div class="p-6 content">
             <div>
               <h3 class="text-2xl font-semibold mb-2 text-blue-300">Servicios Telemáticos</h3>
-              <p class="text-gray-300 mb-4">Un proyecto de despliegue de servicios de red con un servidor HTTP personalizado en Python, Apache HTTP/HTTPS con certificados X.509, DNS, SMTP/POP e IPsec con IKEv2. Implementa control de acceso basado en cookies, validación de correos y comunicaciones seguras, verificadas con trazas de Wireshark.</p>
+              <p class="text-gray-300 mb-4">Un proyecto de despliegue de servicios de red con un servidor HTTP personalizado en Python. Implementa control de acceso basado en cookies y validación de correos.</p>
             </div>
-            <button onclick="openModal('telematics')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto">Ver Detalles</button>
+            <button onclick="openModal('telematics')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
           </div>
         </div>
         <!-- Simulación de Red -->
         <div class="project-card rounded-2xl overflow-hidden">
-          <img src="https://via.placeholder.com/500x300" alt="Simulación de Red">
+          <img src="./assets/images/ar.png" alt="Captura de pantalla de la simulación de red" class="h-[200px] w-full object-cover" loading="lazy">
           <div class="p-6 content">
             <div>
               <h3 class="text-2xl font-semibold mb-2 text-blue-300">Simulación de Red</h3>
-              <p class="text-gray-300 mb-4">Un proyecto en Cisco Packet Tracer que simula dos organizaciones para estudiar protocolos de red y enrutamiento. Configuré dispositivos, establecí conectividad y analicé tráfico para entender protocolos como DNS, DHCP y OSPF, asegurando comunicación robusta entre organizaciones.</p>
+              <p class="text-gray-300 mb-4">Un proyecto que simula dos organizaciones para estudiar protocolos de red y enrutamiento. Configuré dispositivos y analicé tráfico para entender protocolos como DHCP y OSPF, asegurando comunicación robusta entre organizaciones.</p>
             </div>
-            <button onclick="openModal('networksim')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto">Ver Detalles</button>
+            <button onclick="openModal('networksim')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
           </div>
         </div>
         <!-- Compilador en Python -->
         <div class="project-card rounded-2xl overflow-hidden">
-          <img src="https://via.placeholder.com/500x300" alt="Compilador Python">
+          <img src="./assets/images/compilador.png" alt="Captura de pantalla del compilador en Python" class="h-[200px] w-full object-cover" loading="lazy">
           <div class="p-6 content">
             <div>
               <h3 class="text-2xl font-semibold mb-2 text-blue-300">Compilador en Python</h3>
               <p class="text-gray-300 mb-4">Un compilador desarrollado en Python utilizando autómatas lineales formales para el análisis léxico y sintáctico. Procesa un lenguaje personalizado, generando código intermedio para su ejecución. Incluye manejo de errores y optimización básica del código generado.</p>
             </div>
-            <button onclick="openModal('compiler')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto">Ver Detalles</button>
+            <button onclick="openModal('compiler')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
           </div>
         </div>
       </div>
@@ -347,9 +391,9 @@
   <!-- AppChat Modal -->
   <div id="modal-appchat" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('appchat')">×</span>
+      <span class="close-btn" onclick="closeModal('appchat')" tabindex="0" onkeydown="handleKeyClose('appchat', event)">×</span>
       <h3 class="text-3xl font-bold mb-4">AppChat</h3>
-      <p class="mb-4">AppChat es una aplicación de mensajería en tiempo real inspirada en WhatsApp, diseñada para ofrecer una experiencia de comunicación fluida y eficiente. Desarrollada en Java utilizando Maven para la gestión de dependencias y Swing para la interfaz gráfica, esta aplicación implementa patrones de diseño robustos como MVC para garantizar escalabilidad y mantenibilidad.</p>
+      <p class="mb-4">AppChat es una aplicación de mensajería en tiempo real inspirada en WhatsApp, diseñada para ofrecer una experiencia de comunicación fluida y eficiente. Desarrollada en Java, esta aplicación implementa patrones de diseño robustos como MVC para garantizar escalabilidad y mantenibilidad.</p>
       <p class="mb-4">Entre sus funcionalidades destacan:</p>
       <ul class="list-disc pl-6 mb-4">
         <li>Chats grupales y mensajes directos para comunicación flexible.</li>
@@ -358,16 +402,16 @@
         <li>Exportación de chats en formato PDF para archivar conversaciones importantes.</li>
       </ul>
       <p class="mb-4">Este proyecto demuestra mi capacidad para desarrollar aplicaciones de escritorio complejas, gestionando la lógica de mensajería en tiempo real y diseñando interfaces de usuario intuitivas.</p>
-      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Java, Maven, Swing.</p>
+      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Java.</p>
       <p><a href="#" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- LinguaLearn Modal -->
   <div id="modal-lingualearn" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('lingualearn')">×</span>
+      <span class="close-btn" onclick="closeModal('lingualearn')" tabindex="0" onkeydown="handleKeyClose('lingualearn', event)">×</span>
       <h3 class="text-3xl font-bold mb-4">LinguaLearn</h3>
-      <p class="mb-4">LinguaLearn es una plataforma de aprendizaje interactiva inspirada en Duolingo, diseñada para facilitar la educación personalizada. Desarrollada en Java con JavaFX para la interfaz gráfica, esta aplicación permite a creadores diseñar cursos y a estudiantes aprender de manera efectiva con estrategias adaptadas.</p>
+      <p class="mb-4">LinguaLearn es una plataforma de aprendizaje interactiva inspirada en Duolingo, diseñada para facilitar la educación personalizada. Desarrollada en Java, esta aplicación permite a creadores diseñar cursos y a estudiantes aprender de manera efectiva con estrategias adaptadas.</p>
       <p class="mb-4">Características principales:</p>
       <ul class="list-disc pl-6 mb-4">
         <li>Soporte para creadores y estudiantes, con roles diferenciados.</li>
@@ -375,18 +419,17 @@
         <li>Estrategias de aprendizaje como secuencial, repetición espaciada y aleatoria.</li>
         <li>Guardado y reanudación del progreso en cualquier momento.</li>
         <li>Estadísticas de uso (tiempo, rachas, etc.) para motivar a los usuarios.</li>
-        <li>Importación y compartición de cursos mediante archivos JSON/YAML.</li>
         <li>Función de seguimiento de creadores, inscribiendo automáticamente a sus cursos.</li>
       </ul>
       <p class="mb-4">Este proyecto destaca mi capacidad para diseñar sistemas educativos complejos con interfaces modernas y funcionalidades avanzadas de aprendizaje.</p>
-      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Java, JavaFX, JSON/YAML.</p>
+      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Java.</p>
       <p><a href="#" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- Regalos Ana Fátima Modal -->
   <div id="modal-regalosana" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('regalosana')">×</span>
+      <span class="close-btn" onclick="closeModal('regalosana')" tabindex="0" onkeydown="handleKeyClose('regalosana', event)">×</span>
       <h3 class="text-3xl font-bold mb-4">Regalos Ana Fátima</h3>
       <p class="mb-4">Regalos Ana Fátima es una plataforma de comercio electrónico full-stack diseñada para la venta de regalos personalizados. Construida desde cero con HTML, CSS, JavaScript y PHP, esta aplicación ofrece una experiencia de compra fluida y segura, optimizada para todos los dispositivos gracias a su diseño responsivo.</p>
       <p class="mb-4">Funcionalidades clave:</p>
@@ -397,14 +440,14 @@
         <li>Optimización para rendimiento, reduciendo tiempos de carga.</li>
       </ul>
       <p class="mb-4">Este proyecto refleja mi experiencia en desarrollo web full-stack, desde el diseño del frontend hasta la implementación de un backend seguro y eficiente.</p>
-      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> HTML, CSS, JavaScript, PHP, RedSys.</p>
+      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> HTML, CSS, JavaScript, PHP, MySQL.</p>
       <p><a href="#" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- NanoFiles Modal -->
   <div id="modal-nanofiles" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('nanofiles')">×</span>
+      <span class="close-btn" onclick="closeModal('nanofiles')" tabindex="0" onkeydown="handleKeyClose('nanofiles', event)">×</span>
       <h3 class="text-3xl font-bold mb-4">NanoFiles</h3>
       <p class="mb-4">NanoFiles es un sistema de compartición de archivos peer-to-peer desarrollado en Java, diseñado para implementar protocolos de red personalizados sobre UDP y TCP. Este proyecto incluye un servidor de directorio y clientes/servidores, ofreciendo una solución robusta para la transferencia de archivos entre pares.</p>
       <p class="mb-4">Características implementadas:</p>
@@ -412,54 +455,50 @@
         <li>Protocolo confiable sobre UDP para comunicación con el servidor de directorio.</li>
         <li>Protocolo TCP para transferencias de archivos entre pares.</li>
         <li>Funcionalidades básicas: inicio de sesión, listado de usuarios, publicación y búsqueda de archivos, descargas y cierre de sesión.</li>
-        <li>Mejoras opcionales: soporte para servidores multi-hilo, descargas paralelas desde múltiples servidores, gestión dinámica de puertos y actualización automática de archivos disponibles.</li>
+        <li>Mejoras opcionales: soporte para servidores multi-hilo y descargas paralelas desde múltiples servidores.</li>
       </ul>
       <p class="mb-4">Este proyecto demuestra mi experiencia en diseño e implementación de protocolos de red, así como en programación concurrente y sistemas distribuidos.</p>
-      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Java, UDP, TCP, Wireshark.</p>
+      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Java.</p>
       <p><a href="#" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- Servicios Telemáticos Modal -->
   <div id="modal-telematics" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('telematics')">×</span>
+      <span class="close-btn" onclick="closeModal('telematics')" tabindex="0" onkeydown="handleKeyClose('telematics', event)">×</span>
       <h3 class="text-3xl font-bold mb-4">Servicios Telemáticos</h3>
-      <p class="mb-4">Servicios Telemáticos es un proyecto integral de despliegue de servicios de red, diseñado para simular un entorno organizacional real. Incluye múltiples servicios configurados y verificados mediante trazas de Wireshark, demostrando un conocimiento profundo de protocolos y seguridad en redes.</p>
+      <p class="mb-4">Servicios Telemáticos es un proyecto integral de despliegue de servicios de red, diseñado para simular un entorno organizacional real.</p>
       <p class="mb-4">Componentes implementados:</p>
       <ul class="list-disc pl-6 mb-4">
         <li>Servidor HTTP personalizado en Python con soporte para GET, POST, cookies y persistencia de conexión.</li>
-        <li>Servidor Apache HTTP/HTTPS con autenticación mediante certificados X.509.</li>
-        <li>Servidor DNS primario y secundario para resolución de nombres.</li>
-        <li>Servicio de correo SMTP/POP con registro MX en DNS.</li>
-        <li>Seguridad mediante IPsec en modo transporte con IKEv2.</li>
       </ul>
       <p class="mb-4">Este proyecto destaca mi capacidad para configurar y gestionar servicios de red complejos, asegurando seguridad y funcionalidad.</p>
-      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Python, Apache HTTP, DNS, SMTP/POP, IPsec, Wireshark.</p>
+      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Python.</p>
       <p><a href="#" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- Simulación de Red Modal -->
   <div id="modal-networksim" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('networksim')">×</span>
+      <span class="close-btn" onclick="closeModal('networksim')" tabindex="0" onkeydown="handleKeyClose('networksim', event)">×</span>
       <h3 class="text-3xl font-bold mb-4">Simulación de Red</h3>
-      <p class="mb-4">Simulación de Red es un proyecto desarrollado en Cisco Packet Tracer que simula la infraestructura de red de dos organizaciones, diseñado para estudiar y analizar protocolos de red y enrutamiento en un entorno controlado.</p>
+      <p class="mb-4">Simulación de Red es un proyecto que simula la infraestructura de red de dos organizaciones, diseñado para estudiar y analizar protocolos de red y enrutamiento en un entorno controlado.</p>
       <p class="mb-4">Aspectos clave:</p>
       <ul class="list-disc pl-6 mb-4">
         <li>Configuración de dispositivos de red (routers, switches, servidores).</li>
-        <li>Implementación de protocolos como DNS, DHCP y OSPF.</li>
+        <li>Implementación de protocolos como DHCP y OSPF.</li>
         <li>Análisis de tráfico para asegurar conectividad y rendimiento.</li>
         <li>Establecimiento de comunicación robusta entre organizaciones.</li>
       </ul>
       <p class="mb-4">Este proyecto demuestra mi comprensión práctica de los fundamentos de redes y mi capacidad para aplicar conceptos teóricos en simulaciones realistas.</p>
-      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Cisco Packet Tracer, DNS, DHCP, OSPF.</p>
+      <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Redes.</p>
       <p><a href="#" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- Compilador en Python Modal -->
   <div id="modal-compiler" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('compiler')">×</span>
+      <span class="close-btn" onclick="closeModal('compiler')" tabindex="0" onkeydown="handleKeyClose('compiler', event)">×</span>
       <h3 class="text-3xl font-bold mb-4">Compilador en Python</h3>
       <p class="mb-4">Este proyecto consiste en la creación de un compilador en Python utilizando autómatas lineales formales para el análisis léxico y sintáctico. El compilador procesa un lenguaje de programación personalizado, generando código intermedio que puede ser ejecutado en una máquina virtual sencilla. El proyecto abarca todas las fases de un compilador, desde el análisis léxico hasta la generación de código.</p>
       <p class="mb-4">Características implementadas:</p>
@@ -482,13 +521,13 @@
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 section-title text-blue-300">Contacto</h2>
       <p class="text-lg text-center mb-12 text-gray-300">¿Interesado en colaborar o saber más sobre mi trabajo? ¡Contáctame!</p>
       <div class="flex justify-center space-x-12">
-        <a href="mailto:andres.martinez@ejemplo.com" class="contact-icon text-blue-400">
+        <a href="mailto:andres.martinez@ejemplo.com" class="contact-icon text-blue-400" tabindex="0" aria-label="Enviar correo a Andrés Martínez">
           <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12.713l11.985-7.428A1 1 0 0023 4H1a1 1 0 00-.985 1.285L12 12.713zM12 14.287L.015 6.858A3 3 0 013 3h18a3 3 0 012.985 3.858L12 14.287zM1.515 7.858A3 3 0 001 9v10a3 3 0 003 3h16a3 3 0 003-3V9a3 3 0 00-.515-1.142L12 13.57 1.515 7.858z"/></svg>
         </a>
-        <a href="https://linkedin.com/in/andres-martinez" target="_blank" class="contact-icon text-blue-400">
+        <a href="https://linkedin.com/in/andres-martinez" target="_blank" class="contact-icon text-blue-400" tabindex="0" aria-label="Visitar perfil de LinkedIn de Andrés Martínez">
           <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-1 2H6a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1zM8.5 7.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm1.5 4.5v5h-2v-5h2zm3 0v5h-2v-5h2zm3 0v5h-2v-3.5a1.5 1.5 0 013 0V16z"/></svg>
         </a>
-        <a href="https://github.com/andres-martinez" target="_blank" class="contact-icon text-blue-400">
+        <a href="https://github.com/andres-martinez" target="_blank" class="contact-icon text-blue-400" tabindex="0" aria-label="Visitar perfil de GitHub de Andrés Martínez">
           <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-3.162 19.396c.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.698-2.782.604-3.369-1.34-3.369-1.34-.454-1.153-1.11-1.46-1.11-1.46-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.647.349-1.087.636-1.338-2.22-.251-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.253-.446-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.641.699 1.03 1.592 1.03 2.683 0 3.841-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18 .577.688.479A10 10 0 0012 2z"/></svg>
         </a>
       </div>
@@ -497,7 +536,7 @@
 
   <!-- Pie de Página -->
   <footer class="py-8 text-center">
-    <p class="text-gray-400 text-lg">© 2025 Andrés Martínez. Creado con pasión.</p>
+    <p class="text-gray-400 text-lg">© 2025 Andrés Martínez Lorca. Creado con pasión.</p>
   </footer>
 
   <script>
@@ -508,7 +547,7 @@
     canvas.height = window.innerHeight;
 
     const stars = [];
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 150; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -548,7 +587,17 @@
     });
 
     // Funciones para el Modal
+    function closeAllModals() {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (modal.style.display === 'flex') {
+          const projectId = modal.id.split('-')[1];
+          closeModal(projectId);
+        }
+      });
+    }
+
     function openModal(projectId) {
+      closeAllModals();
       const modal = document.getElementById(`modal-${projectId}`);
       modal.style.display = 'flex';
       gsap.fromTo(modal.querySelector('.modal-content'), 
@@ -568,6 +617,12 @@
           modal.style.display = 'none';
         }
       });
+    }
+
+    function handleKeyClose(projectId, event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        closeModal(projectId);
+      }
     }
 
     // Cerrar modal al hacer clic fuera
@@ -634,6 +689,19 @@
       ease: 'power4.out'
     });
 
+    // Animaciones Experiencia
+    gsap.from('.experience-item', {
+      scrollTrigger: {
+        trigger: '.experience-item',
+        start: 'top 80%'
+      },
+      opacity: 0,
+      x: -50,
+      duration: 1,
+      stagger: 0.3,
+      ease: 'power4.out'
+    });
+
     // Animaciones Habilidades
     gsap.from('.skill-tag', {
       scrollTrigger: {
@@ -675,7 +743,7 @@
 
     // Typed.js para Texto Dinámico
     var typed = new Typed('#typed-text', {
-      strings: ['Desarrollador Full-Stack', 'Experto en Java', 'Ingeniero de Redes', 'Solucionador de Problemas'],
+      strings: ['Desarrollador Full-Stack', 'Futuro Experto en IA', 'Apasionado por Software', 'Solucionador de Problemas'],
       typeSpeed: 60,
       backSpeed: 40,
       backDelay: 2000,
