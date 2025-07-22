@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-andres-martinez",
+  "version": "1.0.0",
+  "description": "Portfolio de Andrés Martínez - Estudiante de Ingeniería Informática",
+  "main": "index.html",
+  "scripts": {
+    "build-css": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --watch",
+    "build-production": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --minify"
+  },
+  "keywords": ["portfolio", "tailwindcss", "javascript"],
+  "author": "Andrés Martínez",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+} 

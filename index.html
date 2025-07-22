@@ -3,198 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portafolio de Andrés Martínez, estudiante de Ingeniería Informática en la Universidad de Murcia, especializado en desarrollo full-stack, software e IA.">
-  <meta name="keywords" content="Andrés Martínez, ingeniero informático, desarrollo full-stack, software, IA, portafolio, Universidad de Murcia">
-  <meta name="author" content="Andrés Martínez Lorca">
-  <title>Portafolio de Andrés Martínez</title>
+  <meta name="description" content="Portfolio de Andrés Martínez, estudiante de Ingeniería Informática especializado en desarrollo full-stack, inteligencia artificial y redes.">
+  <meta name="keywords" content="Andrés Martínez, portfolio, ingeniería informática, desarrollador full-stack, inteligencia artificial, Murcia">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Andrés Martínez">
+  <title>Andrés Martínez | Portfolio de Ingeniero Informático</title>
   <link rel="preload" href="./assets/images/yo.jpg" as="image">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="assets/images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="./assets/css/styles.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: #0a0a1a;
-      color: #ffffff;
-      overflow-x: hidden;
-      position: relative;
-    }
-    #stars-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at center, #1a1a3a 0%, #0a0a1a 100%);
-    }
-    .glow-btn {
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .glow-btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300%;
-      height: 300%;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.5), transparent);
-      transform: translate(-50%, -50%) scale(0);
-      transition: transform 0.5s ease;
-    }
-    .glow-btn:hover::before {
-      transform: translate(-50%, -50%) scale(1);
-    }
-    .glow-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
-    }
-    .project-card {
-      background: rgba(20, 20, 40, 0.9);
-      border: 1px solid rgba(59, 130, 246, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      min-height: 450px;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent);
-      transform: rotate(45deg);
-      transition: transform 0.5s ease;
-      opacity: 0;
-    }
-    .project-card:hover::before {
-      transform: rotate(45deg) translate(70%, 70%);
-      opacity: 1;
-    }
-    .project-card img {
-      height: 200px;
-      object-fit: cover;
-    }
-    .project-card .content {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .section-title {
-      text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
-    }
-    .contact-icon {
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-    .contact-icon:hover {
-      transform: scale(1.3);
-      filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.7));
-    }
-    .contact-icon:focus {
-      transform: scale(1.3);
-      filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.7));
-      outline: none;
-    }
-    .skill-tag {
-      background: rgba(59, 130, 246, 0.2);
-      border: 1px solid rgba(59, 130, 246, 0.5);
-      transition: transform 0.3s ease, background 0.3s ease;
-      min-width: 100px;
-      text-align: center;
-    }
-    .skill-tag:hover {
-      background: rgba(59, 130, 246, 0.4);
-      transform: scale(1.1);
-    }
-    /* Estilos para el modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10, 10, 26, 0.95);
-      z-index: 50;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background: rgba(20, 20, 40, 0.9);
-      border: 2px solid rgba(59, 130, 246, 0.6);
-      border-radius: 15px;
-      max-width: 800px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 2rem;
-      position: relative;
-      box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-    }
-    .modal-content::-webkit-scrollbar {
-      width: 8px;
-    }
-    .modal-content::-webkit-scrollbar-track {
-      background: rgba(59, 130, 246, 0.1);
-    }
-    .modal-content::-webkit-scrollbar-thumb {
-      background: rgba(59, 130, 246, 0.6);
-      border-radius: 4px;
-    }
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.5rem;
-      color: #ffffff;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-    .close-btn:hover,
-    .close-btn:focus {
-      color: #3b82f6;
-      outline: none;
-    }
-    .modal-content h3 {
-      color: #3b82f6;
-      text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
-    }
-    .modal-content p, .modal-content li {
-      color: #d1d5db;
-    }
-    .modal-content a {
-      color: #3b82f6;
-      font-weight: 600;
-    }
-    .modal-content a:hover {
-      color: #60a5fa;
-    }
-    /* Estilos para la sección de experiencia */
-    .experience-item {
-      background: rgba(20, 20, 40, 0.9);
-      border-left: 4px solid rgba(59, 130, 246, 0.6);
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      border-radius: 0 8px 8px 0;
-      transition: transform 0.3s ease;
-    }
-    .experience-item:hover {
-      transform: translateX(10px);
-    }
-  </style>
+
 </head>
 <body>
   <!-- Fondo de Estrellas -->
@@ -237,7 +59,7 @@
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 section-title text-blue-300">Sobre mí</h2>
       <div class="flex flex-col md:flex-row items-center gap-12">
         <div class="md:w-1/2">
-          <img src="./assets/images/yo.jpg" alt="Andrés Martínez" class="rounded-2xl about-image mx-auto" style="filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5));">
+          <img src="./assets/images/yo.jpg" alt="Foto de Andrés Martínez" class="rounded-2xl about-image mx-auto" style="filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5));">
         </div>
         <div class="md:w-1/2 about-text">
           <p class="text-lg leading-relaxed mb-4 text-gray-300">
@@ -265,14 +87,130 @@
           <p class="text-gray-300">Actualmente en tercer año, con un enfoque en Software e Inteligencia Artificial. He trabajado en proyectos académicos como un compilador en Python, un sistema de aprendizaje interactivo y aplicaciones de mensajería en tiempo real, aplicando conceptos de desarrollo de software y redes.</p>
         </div>
         <div class="experience-item">
-          <h3 class="text-xl font-semibold text-blue-300">Prácticas en Software e IA</h3>
-          <p class="text-gray-400 mb-2">Odins Solutions, Murcia (Remoto), Junio 2025</p>
-          <p class="text-gray-300">Próximas prácticas en una empresa líder en soluciones agrícolas tecnológicas. Me encargaré de desarrollar y optimizar software, además de explorar aplicaciones de inteligencia artificial para mejorar procesos agrícolas.</p>
+          <h3 class="text-xl font-semibold text-blue-300">Desarrollador de IA y Microservicios</h3>
+          <p class="text-gray-400 mb-2">OdinS Solutions, Murcia (Remoto), Junio - Julio 2025 (150 horas)</p>
+          <p class="text-gray-300 mb-3">Desarrollé un sistema innovador de <strong>optimización de pesticidas mediante microservicios de detección IA</strong> para cultivos de tomate, maíz y patata. El proyecto combinó deep learning, arquitectura de microservicios y datos climáticos en tiempo real.</p>
+          
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">🧠 Modelos de Inteligencia Artificial</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• <strong>Tomate:</strong> 90.89% precisión (4 enfermedades: Tizón Tardío, Tizón Temprano, Septoriosis)</li>
+              <li>• <strong>Maíz:</strong> 97.16% precisión (5 afecciones: Tizón, Roya Común, Gusano Cogollero, Mancha Gris)</li>
+              <li>• <strong>Patata:</strong> 93.90% precisión (6 tipos: Bacteria, Hongos, Tizón Temprano/Tardío, Plagas)</li>
+              <li>• Transfer Learning con ResNet34, PyTorch, técnicas avanzadas de Data Augmentation</li>
+            </ul>
+          </div>
+
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">🔧 Arquitectura de Microservicios</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• <strong>MS1 - Detección IA:</strong> FastAPI que procesa imágenes y devuelve diagnósticos con score de confianza</li>
+              <li>• <strong>MS2 - Recomendación:</strong> Sistema de tratamientos personalizados basado en cultivo y afección</li>
+              <li>• <strong>Integración climática:</strong> API Visual Crossing para evaluar riesgo según condiciones meteorológicas</li>
+              <li>• Dockerización completa con Docker Compose, despliegue en VM Ubuntu</li>
+            </ul>
+          </div>
+
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">📊 Resultados y Rendimiento</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• Tiempo de inferencia promedio: &lt;0.001s (99.9% por debajo del límite de 10s)</li>
+              <li>• Precisión global en dataset real: 72.73% en condiciones reales</li>
+              <li>• Base de conocimiento JSON con tratamientos químicos, biológicos y medidas culturales</li>
+              <li>• Interfaz Streamlit para demostración y orquestación de microservicios</li>
+            </ul>
+          </div>
+
+          <p class="text-gray-300 mt-3"><strong>Tecnologías:</strong> Python, PyTorch, FastAPI, Docker, Streamlit, Git/GitLab, APIs REST, Transfer Learning, Computer Vision</p>
+          <button onclick="openModal('odins-project')" class="text-blue-400 font-semibold hover:text-blue-300 mt-2 text-sm" tabindex="0">Ver Detalles Técnicos Completos</button>
         </div>
         <div class="experience-item">
-          <h3 class="text-xl font-semibold text-blue-300">Desarrollador Full-Stack - Regalos Ana Fátima</h3>
-          <p class="text-gray-400 mb-2">Socovos, Albacete, 2024</p>
-          <p class="text-gray-300">Desarrollé desde cero la página web de una tienda de regalos, implementando gestión de bases de datos para usuarios y pedidos, un sistema de login/register, carrito de compras y pagos seguros mediante RedSys. Este proyecto me permitió aprender y aplicar habilidades de desarrollo full-stack, trabajando tanto en el frontend como en el backend.</p>
+          <h3 class="text-xl font-semibold text-blue-300">Desarrollador Web Full-Stack</h3>
+          <p class="text-gray-400 mb-2">Contact Murcia MMA, Murcia (Freelance), 2024</p>
+          <p class="text-gray-300 mb-3">Diseño y desarrollo completo del <strong>sitio web oficial para el gimnasio Contact Murcia MMA</strong>, combinando rendimiento, diseño visual de alto impacto y optimización SEO para posicionamiento local. Proyecto live en <a href="https://contactmurcia.com/" target="_blank" class="text-blue-400 hover:text-blue-300">contactmurcia.com</a></p>
+          
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">🎨 Diseño y Frontend</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• <strong>Mobile-First Responsive:</strong> Tailwind CSS con adaptación perfecta a todos los dispositivos</li>
+              <li>• <strong>Efectos Visuales:</strong> Glassmorphism, parallax, animaciones CSS3 fluidas sin comprometer rendimiento</li>
+              <li>• <strong>Paleta Corporativa:</strong> Negro, Rojo (#d32f2f) y Dorado (#ffd700) con tipografías Orbitron + Roboto</li>
+              <li>• <strong>JavaScript ES6+:</strong> Intersection Observer API, animaciones dinámicas, interactividad avanzada</li>
+            </ul>
+          </div>
+
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">🚀 Funcionalidades Implementadas</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• <strong>WhatsApp Flotante:</strong> Contacto directo integrado con el negocio</li>
+              <li>• <strong>Formularios Avanzados:</strong> Validación, opción "Clase gratis", integración con backend</li>
+              <li>• <strong>Google Maps Embebido:</strong> Ubicación interactiva del gimnasio en Cobatillas</li>
+              <li>• <strong>Galería Swiper.js:</strong> Disciplinas MMA, instructores profesionales, testimonios reales</li>
+            </ul>
+          </div>
+
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">🔍 Optimización y Rendimiento</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• <strong>SEO Técnico Completo:</strong> Schema.org, Open Graph, Twitter Cards, meta tags optimizados</li>
+              <li>• <strong>Core Web Vitals:</strong> Optimización para LCP, FID, CLS y posicionamiento en Google</li>
+              <li>• <strong>Accesibilidad WCAG 2.1:</strong> Estructura semántica, navegación por teclado, alt tags</li>
+              <li>• <strong>Performance:</strong> Lazy loading, compresión de imágenes, CSS/JS minificado</li>
+            </ul>
+          </div>
+
+          <p class="text-gray-300 mt-3"><strong>Tecnologías:</strong> HTML5, CSS3, JavaScript ES6+, Tailwind CSS, Swiper.js, Google Maps API, Schema.org, Open Graph</p>
+          <p class="text-gray-300 mt-2"><strong>Resultado:</strong> Sitio web profesional live con excelente rendimiento y posicionamiento local para gimnasio con 7+ disciplinas de artes marciales</p>
+          <button onclick="openModal('contact-murcia-project')" class="text-blue-400 font-semibold hover:text-blue-300 mt-2 text-sm" tabindex="0">Ver Detalles Técnicos y Live Demo</button>
+        </div>
+        <div class="experience-item">
+          <h3 class="text-xl font-semibold text-blue-300">Desarrollador Web Full-Stack</h3>
+          <p class="text-gray-400 mb-2">Regalos Ana Fátima, Socovos, Albacete (Remoto), Enero 2025 - Actualidad</p>
+          <p class="text-gray-300 mb-3">Desarrollo completo del <strong>sitio web de comercio electrónico para Regalos Ana Fátima</strong> desde cero. Lideré todas las fases del proyecto: análisis, arquitectura, desarrollo backend, diseño frontend y puesta a punto para lanzamiento. Proyecto de nivel empresarial con seguridad bancaria.</p>
+          
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">🗄️ Backend y Base de Datos</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• <strong>Base de Datos Relacional:</strong> MySQL con estructura completa (productos, stock, usuarios, pedidos, direcciones)</li>
+              <li>• <strong>Backend PHP:</strong> Arquitectura MVC con validación, seguridad y lógica de negocio personalizada</li>
+              <li>• <strong>Sistema de Autenticación:</strong> Registro, login, recuperación de contraseña con tokens seguros</li>
+              <li>• <strong>Panel de Administración:</strong> Control completo de stock, pedidos, usuarios y productos</li>
+            </ul>
+          </div>
+
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">🛒 E-Commerce Avanzado</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• <strong>Carrito Inteligente:</strong> Gestión de stock dinámico, persistencia de sesión, validación de precios</li>
+              <li>• <strong>Integración Redsys:</strong> Pasarela de pagos segura con validación criptográfica</li>
+              <li>• <strong>Checkout Optimizado:</strong> Flujo completo de compra con cálculo automático de envíos</li>
+              <li>• <strong>Productos Personalizables:</strong> Tartas de pañales con opciones múltiples y vista previa</li>
+            </ul>
+          </div>
+
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">🛡️ Seguridad de Nivel Bancario</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• <strong>Protección CSRF:</strong> Validación en 3 capas (frontend, backend, base de datos)</li>
+              <li>• <strong>Rate Limiting:</strong> Protección contra ataques de fuerza bruta</li>
+              <li>• <strong>Headers de Seguridad:</strong> CSP, X-Frame-Options, HSTS, certificado SSL</li>
+              <li>• <strong>Contraseñas Hasheadas:</strong> bcrypt con coste alto, sesiones HttpOnly seguras</li>
+            </ul>
+          </div>
+
+          <div class="ml-4 mb-3">
+            <h4 class="text-lg font-medium text-blue-200 mb-2">🎨 Frontend y UX/UI</h4>
+            <ul class="text-gray-300 text-sm space-y-1">
+              <li>• <strong>Diseño Responsive:</strong> HTML5, CSS3, JavaScript ES6+ con Tailwind CSS</li>
+              <li>• <strong>Performance Optimizada:</strong> Imágenes WebP, lazy loading, CSS/JS minificado</li>
+              <li>• <strong>SEO Nivel TOP:</strong> Schema.org, Open Graph, URLs canónicas, sitemap.xml</li>
+              <li>• <strong>UX Avanzada:</strong> Búsqueda en tiempo real, modo oscuro/claro, animaciones fluidas</li>
+            </ul>
+          </div>
+
+          <p class="text-gray-300 mt-3"><strong>Tecnologías:</strong> PHP, MySQL, HTML5, CSS3, JavaScript ES6+, Tailwind CSS, Redsys, Git, MVC</p>
+          <p class="text-gray-300 mt-2"><strong>Estado:</strong> Proyecto finalizado técnicamente, en proceso de publicación oficial. Tienda online de nivel empresarial completa</p>
+          <button onclick="openModal('regalos-ana-fatima-project')" class="text-blue-400 font-semibold hover:text-blue-300 mt-2 text-sm" tabindex="0">Ver Arquitectura Completa y Funcionalidades</button>
         </div>
       </div>
     </div>
@@ -282,106 +220,366 @@
   <section id="habilidades" class="py-32 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 section-title text-blue-300">Habilidades</h2>
-      <div class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Java</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">HTML</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">CSS</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">JavaScript</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">PHP</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Python</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">C</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">C++</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">SQL</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">MySQL</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Full-Stack Development</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Excel</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Git</span>
-        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300">IA Fundamentals</span>
+      <div class="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto">
+        <!-- Lenguajes de Programación -->
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Python">Python</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Java">Java</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="JavaScript">JavaScript</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="PHP">PHP</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="C">C</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="C++">C++</span>
+        
+        <!-- Inteligencia Artificial y Machine Learning -->
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="PyTorch">PyTorch</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="TensorFlow">TensorFlow</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Deep Learning">Deep Learning</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Computer Vision">Computer Vision</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Transfer Learning">Transfer Learning</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="CNN/ResNet">CNN/ResNet</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="DeepFace">DeepFace</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="OpenCV">OpenCV</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Emotion Detection">Emotion Detection</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Data Augmentation">Data Augmentation</span>
+        
+        <!-- Desarrollo Web y APIs -->
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="HTML5">HTML5</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="CSS3">CSS3</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="FastAPI">FastAPI</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="APIs REST">APIs REST</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Streamlit">Streamlit</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Streamlit-WebRTC">Streamlit-WebRTC</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="WebRTC">WebRTC</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Plotly">Plotly</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Swiper.js">Swiper.js</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Google Maps API">Google Maps API</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Full-Stack Development">Full-Stack Development</span>
+        
+        <!-- SEO y Optimización -->
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="SEO Técnico">SEO Técnico</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Schema.org">Schema.org</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Open Graph">Open Graph</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Core Web Vitals">Core Web Vitals</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="WCAG Accessibility">WCAG Accessibility</span>
+        
+        <!-- DevOps y Contenedores -->
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Docker">Docker</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Docker Compose">Docker Compose</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Microservicios">Microservicios</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Linux/Ubuntu">Linux/Ubuntu</span>
+        
+        <!-- Bases de Datos y Herramientas -->
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="SQL">SQL</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="MySQL">MySQL</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Git/GitLab">Git/GitLab</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Excel">Excel</span>
+        
+        <!-- E-Commerce y Pagos -->
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Redsys">Redsys</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="E-Commerce">E-Commerce</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="MVC Architecture">MVC Architecture</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="PHPMailer">PHPMailer</span>
+        <span class="skill-tag px-4 py-2 rounded-full text-sm font-semibold text-blue-300" data-skill="Tailwind CSS">Tailwind CSS</span>
       </div>
     </div>
   </section>
 
   <!-- Sección Proyectos -->
-  <section id="proyectos" class="py-32 relative">
+  <section id="proyectos" class="py-32 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 section-title text-blue-300">Proyectos</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- AppChat -->
-        <div class="project-card rounded-2xl overflow-hidden">
-          <img src="./assets/images/appchat.png" alt="Captura de pantalla de la aplicación AppChat" class="h-[200px] w-full object-cover" loading="lazy">
-          <div class="p-6 content">
-            <div>
-              <h3 class="text-2xl font-semibold mb-2 text-blue-300">AppChat</h3>
-              <p class="text-gray-300 mb-4">Una aplicación de mensajería en tiempo real inspirada en WhatsApp, desarrollada en Java. Incluye chats grupales, mensajes directos, soporte para emojis, búsqueda de mensajes y exportación de chats en PDF. Diseñada con patrones como MVC para escalabilidad y mantenibilidad.</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 section-title text-blue-300">
+        <i class="fas fa-rocket mr-4"></i>
+        Mis Proyectos Destacados
+      </h2>
+      
+      <!-- Projects Carousel -->
+      <div class="projects-showcase relative">
+        <!-- Carousel Container -->
+        <div class="carousel-container">
+          <div class="carousel-track" id="projectsTrack">
+            
+            <!-- Proyecto 1: FaceMood AI -->
+            <div class="project-slide active" data-project="facemood-ai">
+              <div class="project-visual">
+                <div class="project-image bg-gradient-to-br from-purple-600 to-pink-600">
+                  <div class="project-overlay">
+                    <div class="text-center">
+                      <div class="text-8xl mb-4 animate-pulse">🧠</div>
+                      <div class="text-white font-bold text-2xl">FaceMood AI</div>
+                      <div class="text-purple-200 text-lg">Live Demo</div>
+                      <div class="flex gap-2 justify-center mt-4">
+                        <span class="badge bg-purple-600">LIVE DEMO</span>
+                        <span class="badge bg-green-600">TIEMPO REAL</span>
+                        <span class="badge bg-pink-600">IA</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-category">🧠 Inteligencia Artificial</div>
+                <h3 class="project-title">FaceMood AI</h3>
+                <p class="project-description">Aplicación web de IA que detecta emociones, edad y género en tiempo real usando deep learning y visión artificial. Análisis continuo con DeepFace y TensorFlow.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">TensorFlow</span>
+                  <span class="tech-tag">Streamlit</span>
+                  <span class="tech-tag">OpenCV</span>
+                </div>
+                <button onclick="openModal('facemood-ai')" class="project-btn">
+                  <i class="fas fa-eye mr-2"></i>
+                  Ver Demo Live
+                </button>
+              </div>
             </div>
-            <button onclick="openModal('appchat')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
+
+            <!-- Proyecto 2: Regalos Ana Fátima -->
+            <div class="project-slide" data-project="regalosana">
+              <div class="project-visual">
+                <div class="project-image">
+                  <img src="./assets/images/regalos.PNG" alt="Regalos Ana Fátima E-Commerce" loading="lazy">
+                  <div class="project-overlay">
+                    <div class="overlay-content">
+                      <div class="text-6xl mb-4">🎁</div>
+                      <div class="text-white font-bold text-xl">E-Commerce Completo</div>
+                      <div class="text-gray-200">Full-Stack Development</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-category">🛒 E-Commerce</div>
+                <h3 class="project-title">Regalos Ana Fátima</h3>
+                <p class="project-description">Tienda online completa con seguridad bancaria, carrito inteligente, integración Redsys y panel de administración. Proyecto full-stack desde cero.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">Redsys</span>
+                </div>
+                <button onclick="openModal('regalosana')" class="project-btn">
+                  <i class="fas fa-shopping-cart mr-2"></i>
+                  Ver E-Commerce
+                </button>
+              </div>
+            </div>
+
+            <!-- Proyecto 3: AppChat -->
+            <div class="project-slide" data-project="appchat">
+              <div class="project-visual">
+                <div class="project-image">
+                  <img src="./assets/images/appchat.png" alt="AppChat Mensajería" loading="lazy">
+                  <div class="project-overlay">
+                    <div class="overlay-content">
+                      <div class="text-6xl mb-4">💬</div>
+                      <div class="text-white font-bold text-xl">Sistema de Mensajería</div>
+                      <div class="text-gray-200">Tiempo Real</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-category">💬 Comunicación</div>
+                <h3 class="project-title">AppChat</h3>
+                <p class="project-description">Aplicación de mensajería inspirada en WhatsApp con chats grupales, emojis, búsqueda de mensajes y exportación PDF. Arquitectura MVC escalable.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">MVC</span>
+                  <span class="tech-tag">Real-Time</span>
+                  <span class="tech-tag">PDF</span>
+                </div>
+                <button onclick="openModal('appchat')" class="project-btn">
+                  <i class="fas fa-comments mr-2"></i>
+                  Ver Detalles
+                </button>
+              </div>
+            </div>
+
+            <!-- Proyecto 4: LinguaLearn -->
+            <div class="project-slide" data-project="lingualearn">
+              <div class="project-visual">
+                <div class="project-image">
+                  <img src="./assets/images/lingualearn.PNG" alt="LinguaLearn Plataforma" loading="lazy">
+                  <div class="project-overlay">
+                    <div class="overlay-content">
+                      <div class="text-6xl mb-4">📚</div>
+                      <div class="text-white font-bold text-xl">Plataforma Educativa</div>
+                      <div class="text-gray-200">Como Duolingo</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-category">📚 Educación</div>
+                <h3 class="project-title">LinguaLearn</h3>
+                <p class="project-description">Plataforma de aprendizaje interactiva con múltiples estrategias, seguimiento de progreso, estadísticas y sistema de creadores. Extensible y gamificada.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">Gamification</span>
+                  <span class="tech-tag">Analytics</span>
+                  <span class="tech-tag">UI/UX</span>
+                </div>
+                <button onclick="openModal('lingualearn')" class="project-btn">
+                  <i class="fas fa-graduation-cap mr-2"></i>
+                  Ver Plataforma
+                </button>
+              </div>
+            </div>
+
+            <!-- Proyecto 5: NanoFiles -->
+            <div class="project-slide" data-project="nanofiles">
+              <div class="project-visual">
+                <div class="project-image">
+                  <img src="./assets/images/nanofiles.PNG" alt="NanoFiles P2P" loading="lazy">
+                  <div class="project-overlay">
+                    <div class="overlay-content">
+                      <div class="text-6xl mb-4">📁</div>
+                      <div class="text-white font-bold text-xl">Sistema P2P</div>
+                      <div class="text-gray-200">Protocolos Personalizados</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-category">🌐 Redes</div>
+                <h3 class="project-title">NanoFiles</h3>
+                <p class="project-description">Sistema peer-to-peer para compartir archivos con protocolos UDP/TCP personalizados. Servidor de directorio y descargas multi-hilo optimizadas.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">UDP/TCP</span>
+                  <span class="tech-tag">P2P</span>
+                  <span class="tech-tag">Multi-threading</span>
+                </div>
+                <button onclick="openModal('nanofiles')" class="project-btn">
+                  <i class="fas fa-network-wired mr-2"></i>
+                  Ver Sistema
+                </button>
+              </div>
+            </div>
+
+            <!-- Proyecto 6: Servicios Telemáticos -->
+            <div class="project-slide" data-project="telematics">
+              <div class="project-visual">
+                <div class="project-image">
+                  <img src="./assets/images/sstt.PNG" alt="Servicios Telemáticos" loading="lazy">
+                  <div class="project-overlay">
+                    <div class="overlay-content">
+                      <div class="text-6xl mb-4">🌐</div>
+                      <div class="text-white font-bold text-xl">Servicios de Red</div>
+                      <div class="text-gray-200">HTTP Personalizado</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-category">🌐 Sistemas</div>
+                <h3 class="project-title">Servicios Telemáticos</h3>
+                <p class="project-description">Despliegue de servicios de red con servidor HTTP personalizado en Python. Implementa control de acceso basado en cookies y validación de correos.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">HTTP</span>
+                  <span class="tech-tag">Redes</span>
+                  <span class="tech-tag">Cookies</span>
+                </div>
+                <button onclick="openModal('telematics')" class="project-btn">
+                  <i class="fas fa-server mr-2"></i>
+                  Ver Detalles
+                </button>
+              </div>
+            </div>
+
+            <!-- Proyecto 7: Simulación de Red -->
+            <div class="project-slide" data-project="networksim">
+              <div class="project-visual">
+                <div class="project-image">
+                  <img src="./assets/images/ar.PNG" alt="Simulación de Red" loading="lazy">
+                  <div class="project-overlay">
+                    <div class="overlay-content">
+                      <div class="text-6xl mb-4">🔗</div>
+                      <div class="text-white font-bold text-xl">Simulación de Red</div>
+                      <div class="text-gray-200">DHCP & OSPF</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-category">🔗 Infraestructura</div>
+                <h3 class="project-title">Simulación de Red</h3>
+                <p class="project-description">Simulación de infraestructura de dos organizaciones para estudiar protocolos de red y enrutamiento. Configuración de dispositivos y análisis de tráfico DHCP y OSPF.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Redes</span>
+                  <span class="tech-tag">DHCP</span>
+                  <span class="tech-tag">OSPF</span>
+                  <span class="tech-tag">Routing</span>
+                </div>
+                <button onclick="openModal('networksim')" class="project-btn">
+                  <i class="fas fa-sitemap mr-2"></i>
+                  Ver Simulación
+                </button>
+              </div>
+            </div>
+
+            <!-- Proyecto 8: Compilador -->
+            <div class="project-slide" data-project="compiler">
+              <div class="project-visual">
+                <div class="project-image">
+                  <img src="./assets/images/compilador.PNG" alt="Compilador Python" loading="lazy">
+                  <div class="project-overlay">
+                    <div class="overlay-content">
+                      <div class="text-6xl mb-4">⚙️</div>
+                      <div class="text-white font-bold text-xl">Compilador</div>
+                      <div class="text-gray-200">Autómatas & Análisis</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-category">⚙️ Compiladores</div>
+                <h3 class="project-title">Compilador Python</h3>
+                <p class="project-description">Compilador desarrollado en Python utilizando autómatas lineales formales para análisis léxico y sintáctico. Genera código intermedio optimizado.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Autómatas</span>
+                  <span class="tech-tag">Lexer</span>
+                  <span class="tech-tag">Parser</span>
+                </div>
+                <button onclick="openModal('compiler')" class="project-btn">
+                  <i class="fas fa-cogs mr-2"></i>
+                  Ver Compilador
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
-        <!-- LinguaLearn -->
-        <div class="project-card rounded-2xl overflow-hidden">
-          <img src="./assets/images/lingualearn.png" alt="Captura de pantalla de la plataforma LinguaLearn" class="h-[200px] w-full object-cover" loading="lazy">
-          <div class="p-6 content">
-            <div>
-              <h3 class="text-2xl font-semibold mb-2 text-blue-300">LinguaLearn</h3>
-              <p class="text-gray-300 mb-4">Una plataforma de aprendizaje similar a Duolingo, desarrollada en Java. Soporta creadores y estudiantes, con tipos de preguntas extensibles, estrategias de aprendizaje (secuencial, repetición espaciada, aleatoria), guardado de progreso y estadísticas de uso. Los creadores pueden ser seguidos para inscribirse automáticamente en sus cursos.</p>
-            </div>
-            <button onclick="openModal('lingualearn')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
-          </div>
+
+        <!-- Navigation Controls -->
+        <div class="carousel-controls">
+          <button class="carousel-btn prev" id="prevBtn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next" id="nextBtn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
-        <!-- Regalos Ana Fátima -->
-        <div class="project-card rounded-2xl overflow-hidden">
-          <img src="./assets/images/regalos.png" alt="Captura de pantalla del sitio web Regalos Ana Fátima" class="h-[200px] w-full object-cover" loading="lazy">
-          <div class="p-6 content">
-            <div>
-              <h3 class="text-2xl font-semibold mb-2 text-blue-300">Regalos Ana Fátima</h3>
-              <p class="text-gray-300 mb-4">Una plataforma de comercio electrónico full-stack para venta de regalos, construida desde cero con HTML, CSS, JavaScript y PHP. Incluye diseño responsivo, carrito de compras y pagos seguros vía RedSys. Optimizada para rendimiento y experiencia de usuario en todos los dispositivos.</p>
-            </div>
-            <button onclick="openModal('regalosana')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
-          </div>
+
+        <!-- Progress Indicators -->
+        <div class="carousel-indicators" id="carouselIndicators">
+          <div class="indicator active" data-index="0"></div>
+          <div class="indicator" data-index="1"></div>
+          <div class="indicator" data-index="2"></div>
+          <div class="indicator" data-index="3"></div>
+          <div class="indicator" data-index="4"></div>
+          <div class="indicator" data-index="5"></div>
+          <div class="indicator" data-index="6"></div>
+          <div class="indicator" data-index="7"></div>
         </div>
-        <!-- NanoFiles -->
-        <div class="project-card rounded-2xl overflow-hidden">
-          <img src="./assets/images/nanofiles.png" alt="Captura de pantalla del sistema NanoFiles" class="h-[200px] w-full object-cover" loading="lazy">
-          <div class="p-6 content">
-            <div>
-              <h3 class="text-2xl font-semibold mb-2 text-blue-300">NanoFiles</h3>
-              <p class="text-gray-300 mb-4">Un sistema de compartición de archivos peer-to-peer en Java, con protocolos personalizados UDP y TCP. Incluye un servidor de directorio y clientes/servidores, soportando inicio de sesión, listado de usuarios, publicación de archivos y descargas multi-hilo.</p>
-            </div>
-            <button onclick="openModal('nanofiles')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
-          </div>
-        </div>
-        <!-- Servicios Telemáticos -->
-        <div class="project-card rounded-2xl overflow-hidden">
-          <img src="./assets/images/sstt.png" alt="Captura de pantalla del proyecto Servicios Telemáticos" class="h-[200px] w-full object-cover" loading="lazy">
-          <div class="p-6 content">
-            <div>
-              <h3 class="text-2xl font-semibold mb-2 text-blue-300">Servicios Telemáticos</h3>
-              <p class="text-gray-300 mb-4">Un proyecto de despliegue de servicios de red con un servidor HTTP personalizado en Python. Implementa control de acceso basado en cookies y validación de correos.</p>
-            </div>
-            <button onclick="openModal('telematics')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
-          </div>
-        </div>
-        <!-- Simulación de Red -->
-        <div class="project-card rounded-2xl overflow-hidden">
-          <img src="./assets/images/ar.png" alt="Captura de pantalla de la simulación de red" class="h-[200px] w-full object-cover" loading="lazy">
-          <div class="p-6 content">
-            <div>
-              <h3 class="text-2xl font-semibold mb-2 text-blue-300">Simulación de Red</h3>
-              <p class="text-gray-300 mb-4">Un proyecto que simula dos organizaciones para estudiar protocolos de red y enrutamiento. Configuré dispositivos y analicé tráfico para entender protocolos como DHCP y OSPF, asegurando comunicación robusta entre organizaciones.</p>
-            </div>
-            <button onclick="openModal('networksim')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
-          </div>
-        </div>
-        <!-- Compilador en Python -->
-        <div class="project-card rounded-2xl overflow-hidden">
-          <img src="./assets/images/compilador.png" alt="Captura de pantalla del compilador en Python" class="h-[200px] w-full object-cover" loading="lazy">
-          <div class="p-6 content">
-            <div>
-              <h3 class="text-2xl font-semibold mb-2 text-blue-300">Compilador en Python</h3>
-              <p class="text-gray-300 mb-4">Un compilador desarrollado en Python utilizando autómatas lineales formales para el análisis léxico y sintáctico. Procesa un lenguaje personalizado, generando código intermedio para su ejecución. Incluye manejo de errores y optimización básica del código generado.</p>
-            </div>
-            <button onclick="openModal('compiler')" class="text-blue-400 font-semibold hover:text-blue-300 mt-auto" tabindex="0">Ver Detalles</button>
-          </div>
+
+        <!-- Auto-play Controls -->
+        <div class="autoplay-controls">
+          <button class="autoplay-btn" id="autoplayBtn">
+            <i class="fas fa-pause"></i>
+            <span class="autoplay-text">Auto</span>
+          </button>
         </div>
       </div>
     </div>
@@ -403,7 +601,7 @@
       </ul>
       <p class="mb-4">Este proyecto demuestra mi capacidad para desarrollar aplicaciones de escritorio complejas, gestionando la lógica de mensajería en tiempo real y diseñando interfaces de usuario intuitivas.</p>
       <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Java.</p>
-      <p><a href="#" target="_blank">Ver Repositorio</a></p>
+      <p><a href="https://github.com/andreesmrtnz/tds-Appchat" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- LinguaLearn Modal -->
@@ -423,7 +621,7 @@
       </ul>
       <p class="mb-4">Este proyecto destaca mi capacidad para diseñar sistemas educativos complejos con interfaces modernas y funcionalidades avanzadas de aprendizaje.</p>
       <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Java.</p>
-      <p><a href="#" target="_blank">Ver Repositorio</a></p>
+      <p><a href="https://github.com/andreesmrtnz/PDS-Duolingo" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- Regalos Ana Fátima Modal -->
@@ -441,7 +639,7 @@
       </ul>
       <p class="mb-4">Este proyecto refleja mi experiencia en desarrollo web full-stack, desde el diseño del frontend hasta la implementación de un backend seguro y eficiente.</p>
       <p class="mb-4"><strong>Tecnologías utilizadas:</strong> HTML, CSS, JavaScript, PHP, MySQL.</p>
-      <p><a href="#" target="_blank">Ver Repositorio</a></p>
+      <p>Pronto disponible...</p>
     </div>
   </div>
   <!-- NanoFiles Modal -->
@@ -459,7 +657,7 @@
       </ul>
       <p class="mb-4">Este proyecto demuestra mi experiencia en diseño e implementación de protocolos de red, así como en programación concurrente y sistemas distribuidos.</p>
       <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Java.</p>
-      <p><a href="#" target="_blank">Ver Repositorio</a></p>
+      <p><a href="https://github.com/andreesmrtnz/NanoFiles" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- Servicios Telemáticos Modal -->
@@ -474,7 +672,7 @@
       </ul>
       <p class="mb-4">Este proyecto destaca mi capacidad para configurar y gestionar servicios de red complejos, asegurando seguridad y funcionalidad.</p>
       <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Python.</p>
-      <p><a href="#" target="_blank">Ver Repositorio</a></p>
+      <p>Pronto se podrá ver el repositorio de GitHub...</p>
     </div>
   </div>
   <!-- Simulación de Red Modal -->
@@ -492,7 +690,7 @@
       </ul>
       <p class="mb-4">Este proyecto demuestra mi comprensión práctica de los fundamentos de redes y mi capacidad para aplicar conceptos teóricos en simulaciones realistas.</p>
       <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Redes.</p>
-      <p><a href="#" target="_blank">Ver Repositorio</a></p>
+      <p><a href="https://github.com/andreesmrtnz/ArquitecturaRedes" target="_blank">Ver Repositorio</a></p>
     </div>
   </div>
   <!-- Compilador en Python Modal -->
@@ -511,7 +709,997 @@
       </ul>
       <p class="mb-4">Este proyecto refleja mi capacidad para aplicar conceptos teóricos de teoría de autómatas y compiladores en un entorno práctico, así como mi experiencia con Python para desarrollar herramientas complejas.</p>
       <p class="mb-4"><strong>Tecnologías utilizadas:</strong> Python.</p>
-      <p><a href="#" target="_blank">Ver Repositorio</a></p>
+      <p><a href="https://github.com/andreesmrtnz/CompiladorPython" target="_blank">Ver Repositorio</a></p>
+    </div>
+  </div>
+
+  <!-- Modal para Proyecto OdinS -->
+  <div id="modal-odins-project" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('odins-project')" tabindex="0" onkeydown="handleKeyClose('odins-project', event)">×</span>
+      <h3 class="text-3xl font-bold mb-4">Optimización de Pesticidas mediante IA - OdinS Solutions</h3>
+      
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🎯 Objetivo del Proyecto</h4>
+        <p class="mb-4">Desarrollar un sistema basado en microservicios capaz de detectar plagas y enfermedades en cultivos de Tomate, Maíz y Patata a partir de imágenes de sus hojas, utilizando técnicas de Inteligencia Artificial, y generar recomendaciones personalizadas sobre el uso de pesticidas enriquecidas con datos climáticos en tiempo real.</p>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🧠 Modelos de Inteligencia Artificial</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🍅 Modelo de Tomate</h5>
+            <p class="text-sm text-gray-300 mb-2"><strong>Precisión:</strong> 90.89%</p>
+            <p class="text-sm text-gray-300 mb-2"><strong>Enfermedades:</strong></p>
+            <ul class="text-xs text-gray-400">
+              <li>• Tizón Tardío (F1: 0.91)</li>
+              <li>• Tizón Temprano (F1: 0.88)</li>
+              <li>• Septoriosis (F1: 0.74)</li>
+              <li>• Saludable (F1: 0.93)</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🌽 Modelo de Maíz</h5>
+            <p class="text-sm text-gray-300 mb-2"><strong>Precisión:</strong> 97.16%</p>
+            <p class="text-sm text-gray-300 mb-2"><strong>Afecciones:</strong></p>
+            <ul class="text-xs text-gray-400">
+              <li>• Tizón (F1: 0.94)</li>
+              <li>• Roya Común (F1: 0.99)</li>
+              <li>• Gusano Cogollero (F1: 1.00)</li>
+              <li>• Mancha Gris (F1: 0.89)</li>
+              <li>• Saludable (F1: 1.00)</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🥔 Modelo de Patata</h5>
+            <p class="text-sm text-gray-300 mb-2"><strong>Precisión:</strong> 93.90%</p>
+            <p class="text-sm text-gray-300 mb-2"><strong>Afecciones:</strong></p>
+            <ul class="text-xs text-gray-400">
+              <li>• Bacteria (F1: 0.98)</li>
+              <li>• Tizón Temprano (F1: 1.00)</li>
+              <li>• Hongos (F1: 0.88)</li>
+              <li>• Tizón Tardío (F1: 1.00)</li>
+              <li>• Plagas (F1: 0.74)</li>
+              <li>• Saludable (F1: 0.93)</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-sm text-gray-300"><strong>Técnica utilizada:</strong> Transfer Learning con ResNet34, WeightedRandomSampler para manejo de desbalance de clases, Data Augmentation avanzado</p>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🏗️ Arquitectura de Microservicios</h4>
+        <div class="bg-gray-800 p-4 rounded-lg border border-blue-400 mb-4">
+          <h5 class="font-semibold text-blue-200 mb-2">Microservicio 1: Detección IA</h5>
+          <ul class="text-sm text-gray-300 space-y-1">
+            <li>• <strong>Endpoint:</strong> POST /detect/{cultivo_type}</li>
+            <li>• <strong>Función:</strong> Recibe imagen, preprocesa, ejecuta modelo y devuelve predicción</li>
+            <li>• <strong>Salida:</strong> JSON con enfermedad detectada y score de confianza</li>
+            <li>• <strong>Rendimiento:</strong> Tiempo promedio < 0.001s (99.9% por debajo del límite)</li>
+          </ul>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg border border-blue-400 mb-4">
+          <h5 class="font-semibold text-blue-200 mb-2">Microservicio 2: Recomendación Inteligente</h5>
+          <ul class="text-sm text-gray-300 space-y-1">
+            <li>• <strong>Endpoint:</strong> POST /recommend</li>
+            <li>• <strong>Función:</strong> Consulta base de conocimiento y datos climáticos</li>
+            <li>• <strong>Integración:</strong> API Visual Crossing para datos meteorológicos en tiempo real</li>
+            <li>• <strong>Salida:</strong> Tratamientos químicos, biológicos y medidas culturales personalizadas</li>
+          </ul>
+        </div>
+        <p class="text-sm text-gray-300"><strong>Innovación clave:</strong> Los microservicios están completamente desacoplados, permitiendo escalabilidad independiente y resiliencia del sistema</p>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🌤️ Base de Conocimiento y Datos Climáticos</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">Base de Conocimiento JSON</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• Información detallada de cada enfermedad</li>
+              <li>• Agentes causales y síntomas</li>
+              <li>• Tratamientos químicos y biológicos</li>
+              <li>• Medidas culturales preventivas</li>
+              <li>• Umbrales climáticos de riesgo</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">Integración Climática</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• API Visual Crossing Weather</li>
+              <li>• Evaluación de riesgo en tiempo real</li>
+              <li>• Correlación clima-enfermedad</li>
+              <li>• Recomendaciones contextualizadas</li>
+              <li>• Soporte a la decisión dinámica</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🚀 Despliegue y Tecnologías</h4>
+        <div class="bg-gray-800 p-4 rounded-lg border border-blue-400 mb-4">
+          <h5 class="font-semibold text-blue-200 mb-2">Stack Tecnológico</h5>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-300">
+            <div>
+              <strong>Deep Learning:</strong>
+              <ul class="text-xs text-gray-400">
+                <li>• PyTorch</li>
+                <li>• Torchvision</li>
+                <li>• ResNet34</li>
+                <li>• Transfer Learning</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Backend:</strong>
+              <ul class="text-xs text-gray-400">
+                <li>• FastAPI</li>
+                <li>• Uvicorn</li>
+                <li>• Python 3.9</li>
+                <li>• APIs REST</li>
+              </ul>
+            </div>
+            <div>
+              <strong>DevOps:</strong>
+              <ul class="text-xs text-gray-400">
+                <li>• Docker</li>
+                <li>• Docker Compose</li>
+                <li>• VM Ubuntu</li>
+                <li>• VirtualBox</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Frontend:</strong>
+              <ul class="text-xs text-gray-400">
+                <li>• Streamlit</li>
+                <li>• Interface interactiva</li>
+                <li>• Orquestación MS</li>
+                <li>• Visualización resultados</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-300"><strong>Entorno:</strong> Entrenamiento en Google Colab con GPU, despliegue en VM Linux por compatibilidad Docker</p>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">📊 Resultados y Validación</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-400">
+            <h5 class="font-semibold text-green-300 mb-2">✅ Cumplimiento Requisitos</h5>
+            <ul class="text-sm text-green-200 space-y-1">
+              <li>• F1-score > 85%: ✅ CUMPLIDO</li>
+              <li>• Tiempo < 10s: ✅ CUMPLIDO</li>
+              <li>• Arquitectura modular: ✅ CUMPLIDO</li>
+              <li>• APIs documentadas: ✅ CUMPLIDO</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900 bg-opacity-20 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-300 mb-2">⚡ Rendimiento</h5>
+            <ul class="text-sm text-blue-200 space-y-1">
+              <li>• Inferencia: < 0.001s</li>
+              <li>• Precisión real: 72.73%</li>
+              <li>• Análisis > 550 imágenes</li>
+              <li>• Margen seguridad: 99.9%</li>
+            </ul>
+          </div>
+          <div class="bg-purple-900 bg-opacity-20 p-4 rounded-lg border border-purple-400">
+            <h5 class="font-semibold text-purple-300 mb-2">🏆 Logros Clave</h5>
+            <ul class="text-sm text-purple-200 space-y-1">
+              <li>• 3 modelos alta precisión</li>
+              <li>• Arquitectura escalable</li>
+              <li>• Despliegue Docker completo</li>
+              <li>• Integración datos externos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🔮 Líneas de Trabajo Futuro</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ul class="text-sm text-gray-300 space-y-2">
+            <li>• <strong>Ampliación:</strong> Nuevos cultivos y enfermedades</li>
+            <li>• <strong>IA Avanzada:</strong> Modelos de recomendación inteligentes</li>
+            <li>• <strong>Trazabilidad:</strong> Base de datos histórica por parcela</li>
+          </ul>
+          <ul class="text-sm text-gray-300 space-y-2">
+            <li>• <strong>CI/CD:</strong> Pipeline automatizado GitLab</li>
+            <li>• <strong>Optimización:</strong> Cuantización y poda de modelos</li>
+            <li>• <strong>IoT:</strong> Integración sensores y meteorología avanzada</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="text-sm text-gray-400 mb-4">
+          <strong>Periodo:</strong> Junio - Julio 2025 (150 horas) | 
+          <strong>Tutores:</strong> Míriam Zambudio Martínez / Rafael Marín Pérez
+        </p>
+        <div class="bg-blue-900 bg-opacity-30 p-4 rounded-lg border border-blue-400">
+          <p class="text-blue-200 font-semibold">
+            "Sistema innovador que combina Computer Vision, microservicios y datos climáticos para revolucionar la agricultura de precisión"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Contact Murcia MMA -->
+  <div id="modal-contact-murcia-project" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('contact-murcia-project')" tabindex="0" onkeydown="handleKeyClose('contact-murcia-project', event)">×</span>
+      <h3 class="text-3xl font-bold mb-4">Contact Murcia MMA - Sitio Web Oficial</h3>
+      
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🎯 Proyecto y Objetivos</h4>
+        <p class="mb-4">Desarrollo completo del sitio web oficial para <strong>Contact Murcia MMA</strong>, gimnasio especializado en artes marciales mixtas ubicado en Cobatillas, Murcia. El objetivo fue crear una presencia digital profesional que reflejara la calidad del gimnasio y generara conversiones efectivas.</p>
+        
+        <div class="bg-blue-900 bg-opacity-20 p-4 rounded-lg border border-blue-400 mb-4">
+          <p class="text-blue-200 font-semibold text-center">
+            🌐 <a href="https://contactmurcia.com/" target="_blank" class="text-blue-300 hover:text-blue-100">Sitio Web Live: contactmurcia.com</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🏗️ Arquitectura y Tecnologías</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🎨 Frontend Core</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• HTML5 Semántico</li>
+              <li>• CSS3 + Tailwind CSS</li>
+              <li>• JavaScript ES6+</li>
+              <li>• Responsive Mobile-First</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🚀 Librerías y APIs</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• Swiper.js (Galerías)</li>
+              <li>• Google Maps Embed API</li>
+              <li>• Font Awesome Icons</li>
+              <li>• Google Fonts Integration</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">⚡ Optimización</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• Intersection Observer API</li>
+              <li>• Lazy Loading Images</li>
+              <li>• CSS/JS Minification</li>
+              <li>• Image Compression</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🥊 Secciones y Funcionalidades</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">📱 Funcionalidades Interactivas</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>WhatsApp Flotante:</strong> Contacto directo (+34) 648 872 860</li>
+              <li>• <strong>Formulario Avanzado:</strong> Validación JS, opción "Clase gratis"</li>
+              <li>• <strong>Mapa Interactivo:</strong> Google Maps de Calle Trébol, Cobatillas</li>
+              <li>• <strong>Menú Responsive:</strong> Hamburger menu con animaciones</li>
+              <li>• <strong>Scroll Suave:</strong> Navegación fluida entre secciones</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🏋️ Secciones Principales</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Hero Section:</strong> "Entrena como un guerrero" + CTAs</li>
+              <li>• <strong>Disciplinas:</strong> MMA, Muay Thai, BJJ, Boxeo, Defensa Personal</li>
+              <li>• <strong>Instructores:</strong> Joaquín Carbonell, Elías "El Animal", Aitor</li>
+              <li>• <strong>Horarios:</strong> Tabla responsive 16:00-22:00</li>
+              <li>• <strong>Testimonios:</strong> Opiniones reales de alumnos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🎨 Diseño Visual y UX</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-red-900 bg-opacity-20 p-4 rounded-lg border border-red-400">
+            <h5 class="font-semibold text-red-300 mb-2">🎨 Paleta de Colores</h5>
+            <ul class="text-sm text-red-200 space-y-1">
+              <li>• <strong>Primario:</strong> Rojo #d32f2f</li>
+              <li>• <strong>Secundario:</strong> Dorado #ffd700</li>
+              <li>• <strong>Base:</strong> Negro #1a1a1a</li>
+              <li>• <strong>Contraste:</strong> Blanco puro</li>
+            </ul>
+          </div>
+          <div class="bg-yellow-900 bg-opacity-20 p-4 rounded-lg border border-yellow-400">
+            <h5 class="font-semibold text-yellow-300 mb-2">✨ Efectos Visuales</h5>
+            <ul class="text-sm text-yellow-200 space-y-1">
+              <li>• Glassmorphism en tarjetas</li>
+              <li>• Efectos Parallax</li>
+              <li>• Animaciones CSS3 fluidas</li>
+              <li>• Hover effects interactivos</li>
+            </ul>
+          </div>
+          <div class="bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-400">
+            <h5 class="font-semibold text-green-300 mb-2">📝 Tipografía</h5>
+            <ul class="text-sm text-green-200 space-y-1">
+              <li>• <strong>Headers:</strong> Orbitron (futurista)</li>
+              <li>• <strong>Body:</strong> Roboto (legibilidad)</li>
+              <li>• Jerarquía visual clara</li>
+              <li>• Responsive typography</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🔍 SEO y Optimización Técnica</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🎯 SEO On-Page</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Schema.org:</strong> LocalBusiness markup para gimnasio</li>
+              <li>• <strong>Open Graph:</strong> Optimización para redes sociales</li>
+              <li>• <strong>Twitter Cards:</strong> Preview optimizado</li>
+              <li>• <strong>Meta Tags:</strong> Title, description, keywords locales</li>
+              <li>• <strong>Canonical URLs:</strong> Evitar contenido duplicado</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">⚡ Core Web Vitals</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>LCP:</strong> Optimización de imágenes hero</li>
+              <li>• <strong>FID:</strong> JavaScript non-blocking</li>
+              <li>• <strong>CLS:</strong> Layout shifts minimizados</li>
+              <li>• <strong>Performance:</strong> 90+ PageSpeed score</li>
+              <li>• <strong>Accesibilidad:</strong> WCAG 2.1 AA compliant</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🥋 Información del Gimnasio</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🏢 Datos del Negocio</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Nombre:</strong> Contact Murcia MMA Academy</li>
+              <li>• <strong>Ubicación:</strong> Calle Trébol, 30163 Cobatillas, Murcia</li>
+              <li>• <strong>Instalaciones:</strong> 140 m² de tatami + octógono profesional</li>
+              <li>• <strong>Especialidad:</strong> Artes marciales mixtas completas</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">👥 Equipo de Instructores</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Joaquín Carbonell:</strong> Fundador, múltiples dans</li>
+              <li>• <strong>Elías "El Animal":</strong> Peleador profesional MMA</li>
+              <li>• <strong>Aitor:</strong> Especialista en Muay Thai</li>
+              <li>• <strong>Experiencia:</strong> 7+ años formando guerreros</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">📊 Resultados y Métricas</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-400">
+            <h5 class="font-semibold text-green-300 mb-2">🚀 Performance</h5>
+            <ul class="text-sm text-green-200 space-y-1">
+              <li>• PageSpeed: 90+ score</li>
+              <li>• Tiempo carga: < 3s</li>
+              <li>• Mobile responsive: 100%</li>
+              <li>• Cross-browser compatible</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900 bg-opacity-20 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-300 mb-2">🔍 SEO Local</h5>
+            <ul class="text-sm text-blue-200 space-y-1">
+              <li>• Posicionamiento "MMA Murcia"</li>
+              <li>• Google My Business optimizado</li>
+              <li>• Citations locales</li>
+              <li>• Reviews integration</li>
+            </ul>
+          </div>
+          <div class="bg-purple-900 bg-opacity-20 p-4 rounded-lg border border-purple-400">
+            <h5 class="font-semibold text-purple-300 mb-2">📈 Conversión</h5>
+            <ul class="text-sm text-purple-200 space-y-1">
+              <li>• CTAs estratégicos</li>
+              <li>• WhatsApp directo</li>
+              <li>• Formulario "Clase gratis"</li>
+              <li>• Testimonials sociales</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🛠️ Proceso de Desarrollo</h4>
+        <div class="bg-gray-800 p-4 rounded-lg border border-blue-400 mb-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-gray-300">
+            <div>
+              <strong class="text-blue-300">1. Análisis</strong>
+              <ul class="text-xs text-gray-400 mt-1">
+                <li>• Research competencia</li>
+                <li>• UX/UI wireframes</li>
+                <li>• Arquitectura información</li>
+              </ul>
+            </div>
+            <div>
+              <strong class="text-blue-300">2. Diseño</strong>
+              <ul class="text-xs text-gray-400 mt-1">
+                <li>• Mockups Figma</li>
+                <li>• Paleta colores</li>
+                <li>• Sistema diseño</li>
+              </ul>
+            </div>
+            <div>
+              <strong class="text-blue-300">3. Desarrollo</strong>
+              <ul class="text-xs text-gray-400 mt-1">
+                <li>• Frontend coding</li>
+                <li>• Responsive testing</li>
+                <li>• Performance optimization</li>
+              </ul>
+            </div>
+            <div>
+              <strong class="text-blue-300">4. Deploy</strong>
+              <ul class="text-xs text-gray-400 mt-1">
+                <li>• Hosting setup</li>
+                <li>• SEO implementation</li>
+                <li>• Analytics integration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="bg-gradient-to-r from-red-900 to-yellow-900 bg-opacity-30 p-6 rounded-lg border-2 border-red-400 mb-4">
+          <h5 class="font-bold text-yellow-300 text-lg mb-2">🥊 Sitio Web Live</h5>
+          <p class="text-red-200 mb-3">
+            Explora el resultado final: diseño profesional, funcionalidades avanzadas y optimización completa
+          </p>
+          <a href="https://contactmurcia.com/" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition-colors">
+            🌐 Visitar contactmurcia.com
+          </a>
+        </div>
+        <p class="text-sm text-gray-400">
+          <strong>Cliente:</strong> Contact Murcia MMA Academy | 
+          <strong>Tipo:</strong> Desarrollo Freelance Full-Stack | 
+          <strong>Año:</strong> 2024
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Regalos Ana Fátima -->
+  <div id="modal-regalos-ana-fatima-project" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('regalos-ana-fatima-project')" tabindex="0" onkeydown="handleKeyClose('regalos-ana-fatima-project', event)">×</span>
+      <h3 class="text-3xl font-bold mb-4">🏆 Regalos Ana Fátima - E-Commerce de Nivel Empresarial</h3>
+      
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🎯 Proyecto Estrella Full-Stack</h4>
+        <p class="mb-4">Desarrollo completo desde cero de una <strong>tienda online profesional de nivel empresarial</strong> para Regalos Ana Fátima, especializada en regalos únicos y personalizados en Socovos, Albacete. Proyecto que abarca desde la arquitectura de base de datos hasta el frontend responsive, implementando seguridad bancaria y funcionalidades avanzadas de e-commerce.</p>
+        
+        <div class="bg-gradient-to-r from-green-900 to-blue-900 bg-opacity-30 p-4 rounded-lg border border-green-400 mb-4">
+          <p class="text-green-200 font-semibold text-center">
+            🚀 <strong>Estado:</strong> Proyecto finalizado técnicamente - Pronto lanzamiento oficial del cliente
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🛡️ Seguridad de Nivel Bancario</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-red-900 bg-opacity-20 p-4 rounded-lg border border-red-400">
+            <h5 class="font-semibold text-red-300 mb-2">🔐 Sistema de Autenticación Blindado</h5>
+            <ul class="text-sm text-red-200 space-y-1">
+              <li>• <strong>Registro seguro:</strong> Validación exhaustiva + protección CSRF</li>
+              <li>• <strong>Login protegido:</strong> Rate limiting + protección fuerza bruta</li>
+              <li>• <strong>Recuperación de contraseñas:</strong> Tokens de un solo uso</li>
+              <li>• <strong>Sesiones blindadas:</strong> HttpOnly, Secure, SameSite=Strict</li>
+              <li>• <strong>Contraseñas:</strong> Hasheadas con bcrypt coste alto (12)</li>
+            </ul>
+          </div>
+          <div class="bg-yellow-900 bg-opacity-20 p-4 rounded-lg border border-yellow-400">
+            <h5 class="font-semibold text-yellow-300 mb-2">💳 Protección de Pagos Inhackeable</h5>
+            <ul class="text-sm text-yellow-200 space-y-1">
+              <li>• <strong>Integración Redsys:</strong> Validación firma criptográfica</li>
+              <li>• <strong>Verificación 3 capas:</strong> Frontend, backend, base de datos</li>
+              <li>• <strong>Anti-manipulación:</strong> Detección carrito en tiempo real</li>
+              <li>• <strong>Validación origen:</strong> Todas las transacciones</li>
+              <li>• <strong>Logs de auditoría:</strong> Completos para cada operación</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+          <h5 class="font-semibold text-blue-200 mb-2">🛡️ Seguridad Web Avanzada</h5>
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm text-gray-300">
+            <div>• HTTPS forzado + HSTS</div>
+            <div>• Headers seguridad (CSP)</div>
+            <div>• Protección CSRF</div>
+            <div>• Rate limiting endpoints</div>
+            <div>• Variables externalizadas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🗄️ Arquitectura Backend Completa</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🗃️ Base de Datos Relacional MySQL</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Productos:</strong> Catálogo completo con categorías</li>
+              <li>• <strong>Stock:</strong> Gestión automática y bloqueos temporales</li>
+              <li>• <strong>Usuarios:</strong> Autenticación y perfiles completos</li>
+              <li>• <strong>Pedidos:</strong> Estados, seguimiento, historial</li>
+              <li>• <strong>Direcciones:</strong> Múltiples por usuario</li>
+              <li>• <strong>Personalización:</strong> Tartas de pañales configurables</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">⚙️ Backend PHP Avanzado</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Arquitectura MVC:</strong> Separación clara de responsabilidades</li>
+              <li>• <strong>Consultas Preparadas:</strong> 100% protegidas contra SQL injection</li>
+              <li>• <strong>Validación Robusta:</strong> Frontend + backend + base de datos</li>
+              <li>• <strong>Manejo de Errores:</strong> Sistema robusto con logs</li>
+              <li>• <strong>Configuración:</strong> Centralizada y segura</li>
+              <li>• <strong>Cron Jobs:</strong> Automatización de tareas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🛒 Sistema E-Commerce Completo</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-purple-900 bg-opacity-20 p-4 rounded-lg border border-purple-400">
+            <h5 class="font-semibold text-purple-300 mb-2">🛍️ Gestión de Productos</h5>
+            <ul class="text-sm text-purple-200 space-y-1">
+              <li>• Catálogo dinámico categorizado</li>
+              <li>• Búsqueda tiempo real + autocompletado</li>
+              <li>• Imágenes optimizadas (WebP + JPG)</li>
+              <li>• Gestión stock con bloqueos</li>
+              <li>• Productos personalizables</li>
+            </ul>
+          </div>
+          <div class="bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-400">
+            <h5 class="font-semibold text-green-300 mb-2">🛒 Carrito Inteligente</h5>
+            <ul class="text-sm text-green-200 space-y-1">
+              <li>• Persistencia sessionStorage seguro</li>
+              <li>• Validación precios tiempo real</li>
+              <li>• Cálculo automático envíos</li>
+              <li>• Anti-manipulación datos</li>
+              <li>• Interfaz responsive fluida</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900 bg-opacity-20 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-300 mb-2">✅ Checkout Optimizado</h5>
+            <ul class="text-sm text-blue-200 space-y-1">
+              <li>• Formulario dirección + CSRF</li>
+              <li>• Cálculo envíos por provincia</li>
+              <li>• Integración Redsys segura</li>
+              <li>• Confirmación email automática</li>
+              <li>• Seguimiento tiempo real</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🎨 Frontend y Experiencia de Usuario</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🖥️ Diseño Moderno y Responsive</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Adaptativo:</strong> Funciona en todos los dispositivos</li>
+              <li>• <strong>Modo Dual:</strong> Oscuro/claro con persistencia</li>
+              <li>• <strong>Animaciones:</strong> Transiciones profesionales suaves</li>
+              <li>• <strong>Tipografía:</strong> Plus Jakarta Sans + Noto Sans optimizada</li>
+              <li>• <strong>Iconografía:</strong> FontAwesome para mejor usabilidad</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🧭 Navegación Intuitiva</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Header Sticky:</strong> Búsqueda integrada siempre visible</li>
+              <li>• <strong>Menú Responsive:</strong> Navegación por categorías</li>
+              <li>• <strong>Breadcrumbs:</strong> Orientación clara del usuario</li>
+              <li>• <strong>WhatsApp Flotante:</strong> Atención al cliente directa</li>
+              <li>• <strong>Footer Optimizado:</strong> Enlaces redes sociales</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🚀 Performance y SEO de Nivel TOP</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-400">
+            <h5 class="font-semibold text-green-300 mb-2">⚡ Optimización Performance</h5>
+            <ul class="text-sm text-green-200 space-y-1">
+              <li>• <strong>Imágenes:</strong> WebP comprimidas + fallback JPG</li>
+              <li>• <strong>Lazy Loading:</strong> Carga diferida implementada</li>
+              <li>• <strong>CSS/JS:</strong> Minificados con versionado automático</li>
+              <li>• <strong>Cache:</strong> Archivos estáticos configurado</li>
+              <li>• <strong>Compresión:</strong> GZIP habilitada</li>
+            </ul>
+          </div>
+          <div class="bg-yellow-900 bg-opacity-20 p-4 rounded-lg border border-yellow-400">
+            <h5 class="font-semibold text-yellow-300 mb-2">🔍 SEO Empresarial (10/10)</h5>
+            <ul class="text-sm text-yellow-200 space-y-1">
+              <li>• <strong>Meta Tags:</strong> Optimizadas para cada página</li>
+              <li>• <strong>Open Graph:</strong> + Twitter Cards para redes</li>
+              <li>• <strong>Structured Data:</strong> Schema.org completo</li>
+              <li>• <strong>URLs:</strong> Canónicas y limpias</li>
+              <li>• <strong>Sitemap:</strong> XML automático + robots.txt</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🎯 Funcionalidades Avanzadas</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-pink-900 bg-opacity-20 p-4 rounded-lg border border-pink-400">
+            <h5 class="font-semibold text-pink-300 mb-2">🎂 Sistema Personalización</h5>
+            <ul class="text-sm text-pink-200 space-y-1">
+              <li>• Tartas pañales configurables</li>
+              <li>• Selección tallas + temáticas</li>
+              <li>• Personalización con nombres</li>
+              <li>• Vista previa tiempo real</li>
+              <li>• Cálculo automático precios</li>
+            </ul>
+          </div>
+          <div class="bg-indigo-900 bg-opacity-20 p-4 rounded-lg border border-indigo-400">
+            <h5 class="font-semibold text-indigo-300 mb-2">📋 Gestión Pedidos</h5>
+            <ul class="text-sm text-indigo-200 space-y-1">
+              <li>• Panel administración completo</li>
+              <li>• Seguimiento estados tiempo real</li>
+              <li>• Notificaciones automáticas email</li>
+              <li>• Gestión stock automática</li>
+              <li>• Cancelación pedidos pending</li>
+            </ul>
+          </div>
+          <div class="bg-teal-900 bg-opacity-20 p-4 rounded-lg border border-teal-400">
+            <h5 class="font-semibold text-teal-300 mb-2">📧 Sistema Notificaciones</h5>
+            <ul class="text-sm text-teal-200 space-y-1">
+              <li>• Emails transaccionales PHPMailer</li>
+              <li>• Templates HTML profesionales</li>
+              <li>• Confirmaciones automáticas</li>
+              <li>• Notificaciones stock admin</li>
+              <li>• Logs actividad completos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">💻 Stack Tecnológico Moderno</h4>
+        <div class="bg-gray-800 p-4 rounded-lg border border-blue-400 mb-4">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-300">
+            <div>
+              <strong class="text-blue-300">Backend</strong>
+              <ul class="text-xs text-gray-400 mt-1">
+                <li>• PHP 8+ MVC</li>
+                <li>• MySQL relacional</li>
+                <li>• Consultas preparadas</li>
+                <li>• Redsys API oficial</li>
+              </ul>
+            </div>
+            <div>
+              <strong class="text-blue-300">Frontend</strong>
+              <ul class="text-xs text-gray-400 mt-1">
+                <li>• HTML5 semántico</li>
+                <li>• CSS3 + Tailwind</li>
+                <li>• JavaScript ES6+ módulos</li>
+                <li>• Responsive design</li>
+              </ul>
+            </div>
+            <div>
+              <strong class="text-blue-300">Seguridad</strong>
+              <ul class="text-xs text-gray-400 mt-1">
+                <li>• CSRF protection</li>
+                <li>• Rate limiting</li>
+                <li>• bcrypt hashing</li>
+                <li>• Headers seguros</li>
+              </ul>
+            </div>
+            <div>
+              <strong class="text-blue-300">DevOps</strong>
+              <ul class="text-xs text-gray-400 mt-1">
+                <li>• Git versionado</li>
+                <li>• Logs estructurados</li>
+                <li>• Config centralizada</li>
+                <li>• Error handling</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">📊 Resultados de Nivel Empresarial</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-400">
+            <h5 class="font-semibold text-green-300 mb-2">💼 Para el Negocio</h5>
+            <ul class="text-sm text-green-200 space-y-1">
+              <li>• Tienda online profesional</li>
+              <li>• Proceso compra optimizado</li>
+              <li>• Gestión automatizada</li>
+              <li>• Análisis ventas integrado</li>
+              <li>• Escalabilidad futura</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900 bg-opacity-20 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-300 mb-2">👥 Para los Clientes</h5>
+            <ul class="text-sm text-blue-200 space-y-1">
+              <li>• Experiencia compra fluida</li>
+              <li>• Proceso pago confiable</li>
+              <li>• Comunicación clara</li>
+              <li>• Soporte WhatsApp integrado</li>
+              <li>• Entrega con seguimiento</li>
+            </ul>
+          </div>
+          <div class="bg-purple-900 bg-opacity-20 p-4 rounded-lg border border-purple-400">
+            <h5 class="font-semibold text-purple-300 mb-2">🔍 Para el SEO</h5>
+            <ul class="text-sm text-purple-200 space-y-1">
+              <li>• Posicionamiento Google óptimo</li>
+              <li>• Visibilidad redes sociales</li>
+              <li>• Velocidad carga excepcional</li>
+              <li>• Experiencia móvil perfecta</li>
+              <li>• Autoridad dominio fortalecida</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="bg-gradient-to-r from-purple-900 to-pink-900 bg-opacity-30 p-6 rounded-lg border-2 border-purple-400 mb-4">
+          <h5 class="font-bold text-pink-300 text-lg mb-2">🏆 E-Commerce de Nivel Empresarial</h5>
+          <p class="text-purple-200 mb-3">
+            Tienda online construida con los mismos estándares que utilizan las grandes empresas del e-commerce: seguridad bancaria, SEO TOP, UX/UI profesional y performance optimizada
+          </p>
+          <div class="bg-gray-700 bg-opacity-50 p-3 rounded-lg">
+            <p class="text-yellow-300 font-semibold">
+              🚀 Proyecto finalizado técnicamente - Pronto lanzamiento oficial
+            </p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-400">
+          <strong>Cliente:</strong> Regalos Ana Fátima, Socovos (Albacete) | 
+          <strong>Duración:</strong> Enero 2025 - Actualidad | 
+          <strong>Tipo:</strong> Desarrollo Full-Stack desde cero
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para FaceMood AI -->
+  <div id="modal-facemood-ai" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('facemood-ai')" tabindex="0" onkeydown="handleKeyClose('facemood-ai', event)">×</span>
+      <h3 class="text-3xl font-bold mb-4">🧠 FaceMood AI - Detección de Emociones en Tiempo Real</h3>
+      
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🎯 Aplicación de IA en Tiempo Real</h4>
+        <p class="mb-4">FaceMood AI es una aplicación web interactiva que utiliza <strong>visión artificial</strong> y <strong>deep learning</strong> para analizar en tiempo real las emociones, edad y género de personas a través de la webcam. Desarrollada con tecnologías modernas de IA y una interfaz web intuitiva.</p>
+        
+        <div class="bg-gradient-to-r from-purple-900 to-pink-900 bg-opacity-30 p-4 rounded-lg border border-purple-400 mb-4">
+          <p class="text-purple-200 font-semibold text-center">
+            🌐 <a href="https://facemood-ai.streamlit.app/" target="_blank" class="text-pink-300 hover:text-pink-100">Demo Live: facemood-ai.streamlit.app</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🎭 Capacidades de Análisis</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-yellow-900 bg-opacity-20 p-4 rounded-lg border border-yellow-400">
+            <h5 class="font-semibold text-yellow-300 mb-2">🎭 Detección de Emociones</h5>
+            <ul class="text-sm text-yellow-200 space-y-1">
+              <li>😀 <strong>Happy:</strong> Feliz, sonrisa, alegría</li>
+              <li>😢 <strong>Sad:</strong> Triste, melancolía, pena</li>
+              <li>😠 <strong>Angry:</strong> Enfadado, ira, frustración</li>
+              <li>😮 <strong>Surprise:</strong> Sorprendido, asombro</li>
+              <li>😨 <strong>Fear:</strong> Miedo, ansiedad, terror</li>
+              <li>🤢 <strong>Disgust:</strong> Asco, repulsión</li>
+              <li>😐 <strong>Neutral:</strong> Calma, equilibrio</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900 bg-opacity-20 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-300 mb-2">👤 Análisis Demográfico</h5>
+            <ul class="text-sm text-blue-200 space-y-1">
+              <li>• <strong>Género:</strong> Identificación automática</li>
+              <li>• <strong>Edad:</strong> Estimación aproximada (±5 años)</li>
+              <li>• <strong>Precisión:</strong> ~95% género, ~85-90% emociones</li>
+              <li>• <strong>Tiempo Real:</strong> Análisis continuo</li>
+              <li>• <strong>Múltiples Rostros:</strong> Detección automática</li>
+            </ul>
+          </div>
+          <div class="bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-400">
+            <h5 class="font-semibold text-green-300 mb-2">📊 Análisis Avanzado</h5>
+            <ul class="text-sm text-green-200 space-y-1">
+              <li>• <strong>Gráficos Dinámicos:</strong> Plotly en tiempo real</li>
+              <li>• <strong>Historial:</strong> Evolución emocional</li>
+              <li>• <strong>Estadísticas:</strong> Métricas detalladas</li>
+              <li>• <strong>Capturas:</strong> Guardado con predicciones</li>
+              <li>• <strong>Exportación:</strong> Datos y resultados</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🤖 Stack de Inteligencia Artificial</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🧠 Deep Learning Core</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>DeepFace:</strong> Análisis facial completo</li>
+              <li>• <strong>TensorFlow:</strong> Framework de deep learning</li>
+              <li>• <strong>OpenCV:</strong> Procesamiento de imágenes</li>
+              <li>• <strong>Modelos Pre-entrenados:</strong> Alta precisión</li>
+              <li>• <strong>Computer Vision:</strong> Detección facial automática</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🌐 Tecnologías Web</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Streamlit:</strong> Framework de aplicaciones web</li>
+              <li>• <strong>Streamlit-WebRTC:</strong> Integración webcam</li>
+              <li>• <strong>Plotly:</strong> Visualizaciones interactivas</li>
+              <li>• <strong>WebRTC:</strong> Comunicación tiempo real</li>
+              <li>• <strong>Python 3.11+:</strong> Backend moderno</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">✨ Funcionalidades Interactivas</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-purple-900 bg-opacity-20 p-4 rounded-lg border border-purple-400">
+            <h5 class="font-semibold text-purple-300 mb-2">🎥 Análisis en Tiempo Real</h5>
+            <ul class="text-sm text-purple-200 space-y-1">
+              <li>• <strong>Webcam Integrada:</strong> Acceso directo a cámara</li>
+              <li>• <strong>Procesamiento Continuo:</strong> Video en tiempo real</li>
+              <li>• <strong>Detección Automática:</strong> Rostros automáticamente</li>
+              <li>• <strong>Latencia Ultra-Baja:</strong> &lt;100ms por frame</li>
+              <li>• <strong>FPS Optimizado:</strong> 15-30 frames por segundo</li>
+            </ul>
+          </div>
+          <div class="bg-pink-900 bg-opacity-20 p-4 rounded-lg border border-pink-400">
+            <h5 class="font-semibold text-pink-300 mb-2">🎨 Interfaz Moderna</h5>
+            <ul class="text-sm text-pink-200 space-y-1">
+              <li>• <strong>Diseño Responsive:</strong> Todos los dispositivos</li>
+              <li>• <strong>Gráficos Dinámicos:</strong> Plotly interactivo</li>
+              <li>• <strong>Métricas Live:</strong> Tiempo real</li>
+              <li>• <strong>Controles Personalizables:</strong> Configuración</li>
+              <li>• <strong>CSS Personalizado:</strong> Diseño atractivo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">📊 Métricas de Rendimiento</h4>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+          <div class="bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-400 text-center">
+            <h5 class="font-semibold text-green-300 mb-2">🎯 Emociones</h5>
+            <div class="text-2xl font-bold text-green-200">85-90%</div>
+            <div class="text-sm text-green-300">Precisión</div>
+          </div>
+          <div class="bg-blue-900 bg-opacity-20 p-4 rounded-lg border border-blue-400 text-center">
+            <h5 class="font-semibold text-blue-300 mb-2">👤 Género</h5>
+            <div class="text-2xl font-bold text-blue-200">~95%</div>
+            <div class="text-sm text-blue-300">Precisión</div>
+          </div>
+          <div class="bg-yellow-900 bg-opacity-20 p-4 rounded-lg border border-yellow-400 text-center">
+            <h5 class="font-semibold text-yellow-300 mb-2">📅 Edad</h5>
+            <div class="text-2xl font-bold text-yellow-200">±5 años</div>
+            <div class="text-sm text-yellow-300">Precisión</div>
+          </div>
+          <div class="bg-purple-900 bg-opacity-20 p-4 rounded-lg border border-purple-400 text-center">
+            <h5 class="font-semibold text-purple-300 mb-2">⚡ Latencia</h5>
+            <div class="text-2xl font-bold text-purple-200">&lt;100ms</div>
+            <div class="text-sm text-purple-300">Por frame</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🎯 Casos de Uso</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">👨‍💼 Aplicaciones Profesionales</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Entrevistas:</strong> Análisis emocional en tiempo real</li>
+              <li>• <strong>Presentaciones:</strong> Evaluación de audiencia</li>
+              <li>• <strong>Bienestar Laboral:</strong> Monitoreo emocional</li>
+              <li>• <strong>Atención al Cliente:</strong> Medición satisfacción</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+            <h5 class="font-semibold text-blue-200 mb-2">🎓 Investigación y Educación</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• <strong>Psicología:</strong> Estudios de comportamiento</li>
+              <li>• <strong>IA Educativa:</strong> Demostraciones prácticas</li>
+              <li>• <strong>Salud Mental:</strong> Monitoreo bienestar</li>
+              <li>• <strong>Investigación Médica:</strong> Análisis facial</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🔮 Roadmap Futuro</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-indigo-900 bg-opacity-20 p-4 rounded-lg border border-indigo-400">
+            <h5 class="font-semibold text-indigo-300 mb-2">🚀 Próximas Funcionalidades</h5>
+            <ul class="text-sm text-indigo-200 space-y-1">
+              <li>• <strong>Múltiples Personas:</strong> Análisis simultáneo</li>
+              <li>• <strong>Micro-expresiones:</strong> Detección avanzada</li>
+              <li>• <strong>Predicción Personalidad:</strong> Big Five traits</li>
+              <li>• <strong>APIs Externas:</strong> Integración servicios</li>
+            </ul>
+          </div>
+          <div class="bg-teal-900 bg-opacity-20 p-4 rounded-lg border border-teal-400">
+            <h5 class="font-semibold text-teal-300 mb-2">📈 Mejoras Técnicas</h5>
+            <ul class="text-sm text-teal-200 space-y-1">
+              <li>• <strong>Modo Offline:</strong> Funcionamiento sin internet</li>
+              <li>• <strong>Exportación Videos:</strong> Análisis completos</li>
+              <li>• <strong>Comparación Usuarios:</strong> Análisis grupo</li>
+              <li>• <strong>Modo Educativo:</strong> Explicaciones IA</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-xl font-semibold mb-3 text-blue-300">🛠️ Instalación y Despliegue</h4>
+        <div class="bg-gray-800 p-4 rounded-lg border border-blue-400 mb-4">
+          <h5 class="font-semibold text-blue-200 mb-2">💻 Instalación Local</h5>
+          <div class="bg-gray-900 p-3 rounded font-mono text-sm text-green-400 mb-2">
+            <div>git clone https://github.com/tu-usuario/facemood-ai.git</div>
+            <div>cd facemood-ai</div>
+            <div>pip install -r requirements_web.txt</div>
+            <div>streamlit run app.py</div>
+          </div>
+          <p class="text-sm text-gray-300">Requisitos: Python 3.11+, cámara web, conexión a internet</p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg border border-blue-400">
+          <h5 class="font-semibold text-blue-200 mb-2">☁️ Despliegue en la Nube</h5>
+          <p class="text-sm text-gray-300 mb-2">Disponible en Streamlit Cloud para acceso inmediato sin instalación</p>
+          <div class="text-sm text-blue-300">
+            <strong>Plataformas soportadas:</strong> Streamlit Cloud, Hugging Face Spaces, Heroku
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="bg-gradient-to-r from-purple-900 to-pink-900 bg-opacity-30 p-6 rounded-lg border-2 border-purple-400 mb-4">
+          <h5 class="font-bold text-pink-300 text-lg mb-2">🧠 Prueba FaceMood AI Ahora</h5>
+          <p class="text-purple-200 mb-3">
+            Experimenta la detección de emociones en tiempo real. Cambia tus expresiones faciales y observa cómo la IA analiza tus emociones al instante
+          </p>
+          <a href="https://facemood-ai.streamlit.app/" target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-6 rounded-full transition-colors">
+            🌐 Abrir Demo Live
+          </a>
+        </div>
+        <p class="text-sm text-gray-400">
+          <strong>Desarrollado:</strong> 2025 | 
+          <strong>Tecnologías:</strong> Python, DeepFace, TensorFlow, Streamlit | 
+          <strong>Tipo:</strong> Aplicación IA en Tiempo Real
+        </p>
+      </div>
     </div>
   </div>
 
@@ -521,13 +1709,13 @@
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 section-title text-blue-300">Contacto</h2>
       <p class="text-lg text-center mb-12 text-gray-300">¿Interesado en colaborar o saber más sobre mi trabajo? ¡Contáctame!</p>
       <div class="flex justify-center space-x-12">
-        <a href="mailto:andres.martinez@ejemplo.com" class="contact-icon text-blue-400" tabindex="0" aria-label="Enviar correo a Andrés Martínez">
+        <a href="mailto:andresml9602@gmail.com" class="contact-icon text-blue-400" tabindex="0" aria-label="Enviar correo a Andrés Martínez">
           <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12.713l11.985-7.428A1 1 0 0023 4H1a1 1 0 00-.985 1.285L12 12.713zM12 14.287L.015 6.858A3 3 0 013 3h18a3 3 0 012.985 3.858L12 14.287zM1.515 7.858A3 3 0 001 9v10a3 3 0 003 3h16a3 3 0 003-3V9a3 3 0 00-.515-1.142L12 13.57 1.515 7.858z"/></svg>
         </a>
-        <a href="https://linkedin.com/in/andres-martinez" target="_blank" class="contact-icon text-blue-400" tabindex="0" aria-label="Visitar perfil de LinkedIn de Andrés Martínez">
+        <a href="https://www.linkedin.com/in/andrés-martinez-lorca-b781a935b/" target="_blank" class="contact-icon text-blue-400" tabindex="0" aria-label="Visitar perfil de LinkedIn de Andrés Martínez">
           <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-1 2H6a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1zM8.5 7.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm1.5 4.5v5h-2v-5h2zm3 0v5h-2v-5h2zm3 0v5h-2v-3.5a1.5 1.5 0 013 0V16z"/></svg>
         </a>
-        <a href="https://github.com/andres-martinez" target="_blank" class="contact-icon text-blue-400" tabindex="0" aria-label="Visitar perfil de GitHub de Andrés Martínez">
+        <a href="https://github.com/andreesmrtnz" target="_blank" class="contact-icon text-blue-400" tabindex="0" aria-label="Visitar perfil de GitHub de Andrés Martínez">
           <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-3.162 19.396c.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.698-2.782.604-3.369-1.34-3.369-1.34-.454-1.153-1.11-1.46-1.11-1.46-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.647.349-1.087.636-1.338-2.22-.251-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.253-.446-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.641.699 1.03 1.592 1.03 2.683 0 3.841-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18 .577.688.479A10 10 0 0012 2z"/></svg>
         </a>
       </div>
@@ -705,28 +1893,29 @@
     // Animaciones Habilidades
     gsap.from('.skill-tag', {
       scrollTrigger: {
-        trigger: '.skill-tag',
-        start: 'top 80%'
+        trigger: '#habilidades',
+        start: 'top 80%',
+        end: 'bottom 20%'
       },
       opacity: 0,
       y: 30,
-      duration: 1,
-      stagger: 0.1,
+      duration: 0.8,
+      stagger: 0.05,
       ease: 'power4.out'
     });
 
-    // Animaciones Proyectos
-    gsap.from('.project-card', {
-      scrollTrigger: {
-        trigger: '.project-card',
-        start: 'top 80%'
-      },
-      opacity: 0,
-      y: 100,
-      duration: 1,
-      stagger: 0.3,
-      ease: 'power4.out'
-    });
+    // Animaciones Proyectos - DESACTIVADO para carrusel
+    // gsap.from('.project-card', {
+    //   scrollTrigger: {
+    //     trigger: '.project-card',
+    //     start: 'top 80%'
+    //   },
+    //   opacity: 0,
+    //   y: 100,
+    //   duration: 1,
+    //   stagger: 0.3,
+    //   ease: 'power4.out'
+    // });
 
     // Animaciones Contacto
     gsap.from('.contact-icon', {
@@ -748,6 +1937,870 @@
       backSpeed: 40,
       backDelay: 2000,
       loop: true
+    });
+
+    // Sistema de Tooltips para Habilidades
+    const skillsData = {
+      'Python': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Detección emociones tiempo real', link: '#modal-facemood-ai' },
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Modelos IA agricultura', link: '#modal-odins-project' },
+          { name: 'Compilador', icon: '⚙️', role: 'Análisis léxico y sintáctico', link: '#modal-compiler' },
+          { name: 'Servicios Telemáticos', icon: '🌐', role: 'Servidor HTTP personalizado', link: '#modal-telematics' }
+        ],
+        experience: '3+ años'
+      },
+      'JavaScript': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Interactividad y animaciones', link: '#modal-contact-murcia-project' },
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Carrito y validaciones', link: '#modal-regalos-ana-fatima-project' },
+          { name: 'Portfolio', icon: '💼', role: 'GSAP y efectos visuales', link: '#proyectos' }
+        ],
+        experience: '3+ años'
+      },
+      'Java': {
+        projects: [
+          { name: 'AppChat', icon: '💬', role: 'Aplicación mensajería MVC', link: '#modal-appchat' },
+          { name: 'LinguaLearn', icon: '📚', role: 'Plataforma educativa', link: '#modal-lingualearn' },
+          { name: 'NanoFiles', icon: '📁', role: 'Sistema P2P archivos', link: '#modal-nanofiles' }
+        ],
+        experience: '3+ años'
+      },
+      'PHP': {
+        projects: [
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Backend completo MVC', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '1+ año'
+      },
+      'PyTorch': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Transfer Learning ResNet34', link: '#modal-odins-project' }
+        ],
+        experience: '6+ meses'
+      },
+      'TensorFlow': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Deep Learning emociones', link: '#modal-facemood-ai' }
+        ],
+        experience: '6+ meses'
+      },
+      'Computer Vision': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Análisis facial tiempo real', link: '#modal-facemood-ai' },
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Detección plagas cultivos', link: '#modal-odins-project' }
+        ],
+        experience: '1+ año'
+      },
+      'FastAPI': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Microservicio detección IA', link: '#modal-odins-project' }
+        ],
+        experience: '6+ meses'
+      },
+      'Docker': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Contenedores microservicios', link: '#modal-odins-project' }
+        ],
+        experience: '6+ meses'
+      },
+      'MySQL': {
+        projects: [
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Base datos relacional completa', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '1+ año'
+      },
+      'Streamlit': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Interfaz web interactiva', link: '#modal-facemood-ai' },
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Dashboard demostración', link: '#modal-odins-project' }
+        ],
+        experience: '1+ año'
+      },
+      'HTML5': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Estructura semántica', link: '#modal-contact-murcia-project' },
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'E-commerce completo', link: '#modal-regalos-ana-fatima-project' },
+          { name: 'Portfolio', icon: '💼', role: 'Diseño profesional', link: '#proyectos' }
+        ],
+        experience: '3+ años'
+      },
+      'CSS3': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Animaciones y efectos', link: '#modal-contact-murcia-project' },
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Diseño responsive', link: '#modal-regalos-ana-fatima-project' },
+          { name: 'Portfolio', icon: '💼', role: 'Estilos avanzados', link: '#proyectos' }
+        ],
+        experience: '3+ años'
+      },
+      'Tailwind CSS': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Framework principal', link: '#modal-contact-murcia-project' },
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Diseño sistema', link: '#modal-regalos-ana-fatima-project' },
+          { name: 'Portfolio', icon: '💼', role: 'Optimización producción', link: '#proyectos' }
+        ],
+        experience: '2+ años'
+      },
+      'Redsys': {
+        projects: [
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Pasarela pagos segura', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '6+ meses'
+      },
+      'SEO Técnico': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Posicionamiento local', link: '#modal-contact-murcia-project' },
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Optimización completa', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '2+ años'
+      },
+      'DeepFace': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Análisis facial completo', link: '#modal-facemood-ai' }
+        ],
+        experience: '3+ meses'
+      },
+      'WebRTC': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Captura webcam tiempo real', link: '#modal-facemood-ai' }
+        ],
+        experience: '3+ meses'
+      },
+      'OpenCV': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Procesamiento de imágenes', link: '#modal-facemood-ai' }
+        ],
+        experience: '6+ meses'
+      },
+      'Plotly': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Gráficos interactivos', link: '#modal-facemood-ai' }
+        ],
+        experience: '6+ meses'
+      },
+      'Docker Compose': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Orquestación servicios', link: '#modal-odins-project' }
+        ],
+        experience: '6+ meses'
+      },
+      'C': {
+        projects: [
+          { name: 'Servicios Telemáticos', icon: '🌐', role: 'Programación sistemas', link: '#modal-telematics' }
+        ],
+        experience: '2+ años'
+      },
+      'C++': {
+        projects: [
+          { name: 'Algoritmos', icon: '⚙️', role: 'Programación avanzada', link: '#proyectos' }
+        ],
+        experience: '2+ años'
+      },
+      'Deep Learning': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Redes neuronales profundas', link: '#modal-facemood-ai' },
+          { name: 'OdinS Solutions', icon: '🌱', role: 'CNNs para agricultura', link: '#modal-odins-project' }
+        ],
+        experience: '1+ año'
+      },
+      'Transfer Learning': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'ResNet34 pre-entrenado', link: '#modal-odins-project' }
+        ],
+        experience: '6+ meses'
+      },
+      'CNN/ResNet': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Arquitectura ResNet34', link: '#modal-odins-project' }
+        ],
+        experience: '6+ meses'
+      },
+      'Emotion Detection': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Detección 7 emociones', link: '#modal-facemood-ai' }
+        ],
+        experience: '3+ meses'
+      },
+      'Data Augmentation': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Técnicas avanzadas datasets', link: '#modal-odins-project' }
+        ],
+        experience: '6+ meses'
+      },
+      'APIs REST': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Microservicios FastAPI', link: '#modal-odins-project' }
+        ],
+        experience: '1+ año'
+      },
+      'Streamlit-WebRTC': {
+        projects: [
+          { name: 'FaceMood AI', icon: '🧠', role: 'Captura cámara tiempo real', link: '#modal-facemood-ai' }
+        ],
+        experience: '3+ meses'
+      },
+      'Swiper.js': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Galerías interactivas', link: '#modal-contact-murcia-project' }
+        ],
+        experience: '1+ año'
+      },
+      'Google Maps API': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Mapa ubicación gimnasio', link: '#modal-contact-murcia-project' }
+        ],
+        experience: '1+ año'
+      },
+      'Full-Stack Development': {
+        projects: [
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Frontend + Backend completo', link: '#modal-regalos-ana-fatima-project' },
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Sitio web integral', link: '#modal-contact-murcia-project' }
+        ],
+        experience: '3+ años'
+      },
+      'Schema.org': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Markup LocalBusiness', link: '#modal-contact-murcia-project' },
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Structured data completo', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '2+ años'
+      },
+      'Open Graph': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'Optimización redes sociales', link: '#modal-contact-murcia-project' },
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Meta tags completos', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '2+ años'
+      },
+      'Core Web Vitals': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'LCP, FID, CLS optimizados', link: '#modal-contact-murcia-project' },
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Performance excepcional', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '2+ años'
+      },
+      'WCAG Accessibility': {
+        projects: [
+          { name: 'Contact Murcia MMA', icon: '🥊', role: 'WCAG 2.1 AA compliant', link: '#modal-contact-murcia-project' }
+        ],
+        experience: '2+ años'
+      },
+      'Microservicios': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Arquitectura desacoplada', link: '#modal-odins-project' }
+        ],
+        experience: '6+ meses'
+      },
+      'Linux/Ubuntu': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Despliegue VM Ubuntu', link: '#modal-odins-project' }
+        ],
+        experience: '1+ año'
+      },
+      'SQL': {
+        projects: [
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Consultas complejas optimizadas', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '2+ años'
+      },
+      'Git/GitLab': {
+        projects: [
+          { name: 'OdinS Solutions', icon: '🌱', role: 'Control versiones colaborativo', link: '#modal-odins-project' },
+          { name: 'Todos los proyectos', icon: '📋', role: 'Versionado profesional', link: '#proyectos' }
+        ],
+        experience: '3+ años'
+      },
+      'Excel': {
+        projects: [
+          { name: 'Análisis de datos', icon: '📊', role: 'Análisis y visualización', link: '#proyectos' }
+        ],
+        experience: '3+ años'
+      },
+      'E-Commerce': {
+        projects: [
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Tienda online completa', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '1+ año'
+      },
+      'MVC Architecture': {
+        projects: [
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Backend estructurado', link: '#modal-regalos-ana-fatima-project' },
+          { name: 'AppChat', icon: '💬', role: 'Aplicación Java MVC', link: '#modal-appchat' }
+        ],
+        experience: '2+ años'
+      },
+      'PHPMailer': {
+        projects: [
+          { name: 'Regalos Ana Fátima', icon: '🎁', role: 'Emails transaccionales', link: '#modal-regalos-ana-fatima-project' }
+        ],
+        experience: '1+ año'
+      }
+    };
+
+    let currentTooltip = null;
+
+    function createTooltip(skill, data) {
+      const tooltip = document.createElement('div');
+      tooltip.className = 'skill-tooltip';
+      
+      // Crear HTML más visual con iconos
+      const projectsHTML = data.projects.map(project => `
+        <div class="project-item" onclick="handleProjectClick('${project.link}')">
+          <div class="project-icon">${project.icon}</div>
+          <div class="project-info">
+            <div class="project-name">
+              <i class="fas fa-arrow-right"></i>
+              ${project.name}
+            </div>
+            <div class="project-role">${project.role}</div>
+          </div>
+          <div class="experience-badge">
+            <i class="fas fa-clock"></i>
+            ${data.experience}
+          </div>
+        </div>
+      `).join('');
+      
+      tooltip.innerHTML = `
+        <div class="tooltip-header">
+          <i class="fas fa-code skill-icon"></i>
+          <h4>${skill}</h4>
+          <div class="skill-level">
+            <i class="fas fa-star"></i>
+            <span>${data.experience}</span>
+          </div>
+        </div>
+        <div class="projects-section">
+          <div class="section-title">
+            <i class="fas fa-rocket"></i>
+            Proyectos donde lo uso
+          </div>
+          <div class="projects-list">
+            ${projectsHTML}
+          </div>
+        </div>
+        <div class="tooltip-footer">
+          <div class="action-hint">
+            <i class="fas fa-mouse-pointer"></i>
+            Haz clic en un proyecto para ver detalles
+          </div>
+          <div class="close-hint">
+            <i class="fas fa-times"></i>
+            Click fuera o ESC para cerrar
+          </div>
+        </div>
+      `;
+      
+      // Estilos mejorados
+      tooltip.style.backgroundColor = 'rgba(15, 15, 30, 0.98)';
+      tooltip.style.border = '2px solid #3b82f6';
+      tooltip.style.color = 'white';
+      
+      return tooltip;
+    }
+
+    function handleProjectClick(link) {
+      hideTooltip();
+      if (link.startsWith('#modal-')) {
+        const modalId = link.replace('#modal-', '');
+        openModal(modalId);
+      } else if (link.startsWith('#')) {
+        const element = document.querySelector(link);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+
+    function positionTooltip(tooltip, skillElement) {
+      const skillRect = skillElement.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // Posicionar inicialmente
+      document.body.appendChild(tooltip);
+      const tooltipRect = tooltip.getBoundingClientRect();
+      
+      let left = skillRect.left + (skillRect.width / 2) - (tooltipRect.width / 2);
+      let top = skillRect.top - tooltipRect.height - 15;
+      
+      // Ajustar si se sale por la izquierda
+      if (left < 10) {
+        left = 10;
+      }
+      
+      // Ajustar si se sale por la derecha
+      if (left + tooltipRect.width > viewportWidth - 10) {
+        left = viewportWidth - tooltipRect.width - 10;
+      }
+      
+      // Si se sale por arriba, colocar abajo
+      if (top < 10) {
+        top = skillRect.bottom + 15;
+      }
+      
+      // Si también se sale por abajo, centrarlo verticalmente
+      if (top + tooltipRect.height > viewportHeight - 10) {
+        top = (viewportHeight - tooltipRect.height) / 2;
+      }
+      
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    }
+
+    function showTooltip(skillElement, skill) {
+      // Si ya hay un tooltip para la misma skill, no hacer nada
+      if (currentTooltip && currentTooltip.getAttribute('data-skill') === skill) {
+        return;
+      }
+      
+      // Ocultar tooltip anterior si existe
+      if (currentTooltip) {
+        hideTooltip();
+      }
+      
+      const data = skillsData[skill];
+      if (!data) {
+        return;
+      }
+      
+      const tooltip = createTooltip(skill, data);
+      tooltip.setAttribute('data-skill', skill);
+      
+      positionTooltip(tooltip, skillElement);
+      
+      // Animación de entrada más suave
+      tooltip.style.transform = 'translateY(20px) scale(0.9)';
+      tooltip.style.opacity = '0';
+      
+      // Mostrar con animación
+      setTimeout(() => {
+        tooltip.classList.add('show');
+        tooltip.style.opacity = '1';
+        tooltip.style.visibility = 'visible';
+        tooltip.style.transform = 'translateY(0) scale(1)';
+      }, 10);
+      
+      // Marcar el skill como activo
+      skillElement.classList.add('active-tooltip');
+      
+      // Event listeners
+      tooltip.addEventListener('mouseenter', function() {
+        // Mantener visible
+      });
+      
+      tooltip.addEventListener('mouseleave', function(e) {
+        setTimeout(() => {
+          const hoveredSkill = document.querySelector('.skill-tag[data-skill]:hover');
+          if (!hoveredSkill) {
+            hideTooltip();
+          }
+        }, 50);
+      });
+      
+      currentTooltip = tooltip;
+      currentTooltip.linkedSkill = skillElement;
+    }
+
+    function hideTooltip() {
+      if (currentTooltip) {
+        // Quitar clase activa del skill
+        if (currentTooltip.linkedSkill) {
+          currentTooltip.linkedSkill.classList.remove('active-tooltip');
+        }
+        
+        // Animación de salida
+        currentTooltip.classList.remove('show');
+        currentTooltip.style.opacity = '0';
+        currentTooltip.style.visibility = 'hidden';
+        currentTooltip.style.transform = 'translateY(10px) scale(0.95)';
+        
+        setTimeout(() => {
+          if (currentTooltip && currentTooltip.parentNode) {
+            currentTooltip.parentNode.removeChild(currentTooltip);
+          }
+          currentTooltip = null;
+        }, 300);
+      }
+    }
+
+    // Función mejorada para verificar si el mouse está sobre tooltip o skill
+    function isMouseOverTooltipArea(e) {
+      if (!currentTooltip) return false;
+      
+      const skillElement = document.querySelector('.skill-tag:hover');
+      const tooltipElement = currentTooltip;
+      
+      return skillElement || tooltipElement.matches(':hover');
+    }
+
+    // Event Listeners para las habilidades - SÚPER ROBUSTA
+    function initializeSkillTooltips() {
+      const skillTags = document.querySelectorAll('.skill-tag[data-skill]');
+      
+      skillTags.forEach((tag, index) => {
+        tag.addEventListener('mouseenter', function() {
+          const skill = this.getAttribute('data-skill');
+          showTooltip(this, skill);
+        });
+      });
+      
+      // Cerrar tooltip solo con click fuera del área
+      document.addEventListener('click', function(e) {
+        if (currentTooltip && 
+            !e.target.closest('.skill-tooltip') && 
+            !e.target.closest('.skill-tag[data-skill]')) {
+          hideTooltip();
+        }
+      });
+      
+      // Cerrar con ESC
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && currentTooltip) {
+          hideTooltip();
+        }
+      });
+      
+      // Cerrar al hacer scroll
+      window.addEventListener('scroll', function() {
+        if (currentTooltip) {
+          hideTooltip();
+        }
+      });
+    }
+
+    // Función de test para tooltips
+    function testTooltip() {
+      console.log('Testing tooltip creation...');
+      const testSkill = 'Python';
+      const testData = skillsData[testSkill];
+      
+      if (testData) {
+        const tooltip = createTooltip(testSkill, testData);
+        tooltip.style.position = 'fixed';
+        tooltip.style.top = '50px';
+        tooltip.style.left = '50px';
+        tooltip.style.zIndex = '9999';
+        tooltip.style.opacity = '1';
+        tooltip.style.visibility = 'visible';
+        tooltip.classList.add('show');
+        
+        document.body.appendChild(tooltip);
+        console.log('Test tooltip added to DOM');
+        
+        // Remover después de 3 segundos
+        setTimeout(() => {
+          if (tooltip.parentNode) {
+            tooltip.parentNode.removeChild(tooltip);
+            console.log('Test tooltip removed');
+          }
+        }, 3000);
+      }
+    }
+
+    // Ejecutar cuando DOM esté listo Y después de las animaciones
+    document.addEventListener('DOMContentLoaded', function() {
+      // Forzar visibilidad de todas las habilidades
+      const skillTags = document.querySelectorAll('.skill-tag');
+      skillTags.forEach(tag => {
+        tag.style.display = 'inline-block';
+        tag.style.visibility = 'visible';
+        tag.style.opacity = '1';
+      });
+      
+      // Inicializar tooltips inmediatamente
+      initializeSkillTooltips();
+      
+      // Re-inicializar después de animaciones
+      setTimeout(() => {
+        initializeSkillTooltips();
+      }, 3000);
+
+      // ===== INICIALIZAR CARRUSEL DE PROYECTOS =====
+      initializeProjectsCarousel();
+    });
+
+    // ===== PROJECTS CAROUSEL FUNCTIONALITY =====
+    
+    function initializeProjectsCarousel() {
+      const track = document.getElementById('projectsTrack');
+      const slides = document.querySelectorAll('.project-slide');
+      const indicators = document.querySelectorAll('.indicator');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const autoplayBtn = document.getElementById('autoplayBtn');
+      
+      let currentSlide = 0;
+      let isAutoplay = true;
+      let autoplayInterval;
+      let isTransitioning = false;
+      
+      // Configuración del auto-scroll - TIMING CONSISTENTE
+      const AUTOPLAY_DELAY = 5000; // 5 segundos EXACTOS para todos
+      
+      function updateCarousel() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        // Usar transform3d para mejor GPU acceleration
+        const translateX = -currentSlide * 100;
+        track.style.transform = `translate3d(${translateX}%, 0, 0)`;
+        
+        // Batch DOM updates para mejor performance
+        requestAnimationFrame(() => {
+          // Actualizar clases activas de slides
+          slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentSlide);
+          });
+          
+          // Actualizar indicadores
+          indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+          });
+        });
+        
+        // Reset transitioning flag después de animación - reducido para mejor fluidez
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 600);
+      }
+      
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateCarousel();
+      }
+      
+      function prevSlide() {
+        currentSlide = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+        updateCarousel();
+      }
+      
+      function goToSlide(index) {
+        if (index !== currentSlide && !isTransitioning) {
+          currentSlide = index;
+          updateCarousel();
+        }
+      }
+      
+      function startAutoplay() {
+        if (isAutoplay) {
+          autoplayInterval = setInterval(nextSlide, AUTOPLAY_DELAY);
+        }
+      }
+      
+      function stopAutoplay() {
+        clearInterval(autoplayInterval);
+      }
+      
+      function toggleAutoplay() {
+        isAutoplay = !isAutoplay;
+        const icon = autoplayBtn.querySelector('i');
+        const text = autoplayBtn.querySelector('.autoplay-text');
+        
+        if (isAutoplay) {
+          icon.className = 'fas fa-pause';
+          autoplayBtn.classList.remove('paused');
+          text.textContent = 'Auto';
+          startAutoplay();
+        } else {
+          icon.className = 'fas fa-play';
+          autoplayBtn.classList.add('paused');
+          text.textContent = 'Play';
+          stopAutoplay();
+        }
+      }
+      
+      // Event Listeners
+      nextBtn.addEventListener('click', () => {
+        stopAutoplay();
+        nextSlide();
+        if (isAutoplay) {
+          setTimeout(startAutoplay, 1000);
+        }
+      });
+      
+      prevBtn.addEventListener('click', () => {
+        stopAutoplay();
+        prevSlide();
+        if (isAutoplay) {
+          setTimeout(startAutoplay, 1000);
+        }
+      });
+      
+      // Indicadores
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          stopAutoplay();
+          goToSlide(index);
+          if (isAutoplay) {
+            setTimeout(startAutoplay, 1000);
+          }
+        });
+      });
+      
+      // Toggle autoplay - con debug
+      if (autoplayBtn) {
+        autoplayBtn.addEventListener('click', toggleAutoplay);
+      } else {
+        console.error('autoplayBtn not found!');
+      }
+      
+      // Pausar en hover - con throttling para mejor performance
+      const carouselContainer = document.querySelector('.carousel-container');
+      
+      let hoverTimeout;
+      carouselContainer.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
+        stopAutoplay();
+      });
+      
+      carouselContainer.addEventListener('mouseleave', () => {
+        clearTimeout(hoverTimeout);
+        if (isAutoplay) {
+          hoverTimeout = setTimeout(startAutoplay, 200); // Pequeño delay para evitar flicker
+        }
+      });
+      
+      // Navegación con teclado
+      document.addEventListener('keydown', (e) => {
+        if (e.target.closest('#proyectos')) {
+          switch(e.key) {
+            case 'ArrowLeft':
+              e.preventDefault();
+              stopAutoplay();
+              prevSlide();
+              if (isAutoplay) setTimeout(startAutoplay, 1000);
+              break;
+            case 'ArrowRight':
+              e.preventDefault();
+              stopAutoplay();
+              nextSlide();
+              if (isAutoplay) setTimeout(startAutoplay, 1000);
+              break;
+            case ' ': // Spacebar
+              e.preventDefault();
+              toggleAutoplay();
+              break;
+          }
+        }
+      });
+      
+      // Touch/Swipe support para móviles
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      
+      carouselContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+          stopAutoplay();
+          
+          if (diff > 0) {
+            nextSlide(); // Swipe left
+          } else {
+            prevSlide(); // Swipe right
+          }
+          
+          if (isAutoplay) {
+            setTimeout(startAutoplay, 1000);
+          }
+        }
+      }
+      
+      // Intersection Observer para performance
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+      };
+      
+      const carouselObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (isAutoplay) startAutoplay();
+          } else {
+            stopAutoplay();
+          }
+        });
+      }, observerOptions);
+      
+      carouselObserver.observe(carouselContainer);
+      
+      // Preload próximas imágenes para mejor performance
+      function preloadImages() {
+        slides.forEach(slide => {
+          const img = slide.querySelector('img');
+          if (img && !img.complete) {
+            const preloadImg = new Image();
+            preloadImg.src = img.src;
+            
+            // Error handler para imágenes que no cargan
+            img.onerror = function() {
+              console.error('Image failed to load:', img.src);
+              // Agregar clase de error
+              img.parentElement.classList.add('image-error');
+            };
+            
+            img.onload = function() {
+              console.log('Image loaded successfully:', img.src);
+              img.parentElement.classList.add('image-loaded');
+            };
+          }
+        });
+      }
+      
+      // Inicializar carrusel con debug
+      console.log('Initializing carousel...');
+      console.log('Slides found:', slides.length);
+      console.log('Indicators found:', indicators.length);
+      console.log('autoplayBtn found:', !!autoplayBtn);
+      
+      updateCarousel();
+      startAutoplay();
+      preloadImages();
+      
+      // Animación inicial de entrada
+      setTimeout(() => {
+        const showcase = document.querySelector('.projects-showcase');
+        showcase.style.opacity = '1';
+        showcase.style.transform = 'translateY(0)';
+      }, 500);
+    }
+
+    // ===== EFECTOS VISUALES ADICIONALES =====
+    
+    // Parallax effect para project images
+    function initializeParallax() {
+      const projectImages = document.querySelectorAll('.project-image');
+      
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        
+        projectImages.forEach(image => {
+          const rect = image.getBoundingClientRect();
+          const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+          
+          if (isInView) {
+            const parallaxSpeed = 0.5;
+            const yPos = -(scrolled * parallaxSpeed);
+            image.style.transform = `translateY(${yPos}px)`;
+          }
+        });
+      });
+    }
+    
+    // Inicializar parallax cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(initializeParallax, 1000);
     });
   </script>
 </body>
