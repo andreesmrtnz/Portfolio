@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import {
   ArrowUp, BellRing, BriefcaseBusiness, Camera, ChevronLeft, ChevronRight, CloudSun, Code2, Cpu, Database, ExternalLink,
   FileText, GraduationCap, LayoutGrid, Mail, MapPin, MessageSquare, Monitor, Scale, Sprout,
 } from 'lucide-react'
 import { siGithub } from 'simple-icons'
-import { CharacterGuide } from './CharacterGuide'
+const CharacterGuide = lazy(() => import('./CharacterGuide').then((m) => ({ default: m.CharacterGuide })))
 import { TechIcon } from './TechIcon'
 import portrait96 from '../assets/images/yo-96.webp'
 import portrait480 from '../assets/images/yo-480.webp'
@@ -591,9 +591,21 @@ function App() {
           </div>
         </div>
       </footer>
-      <CharacterGuide />
+      <LateGuide />
     </>
   )
 }
 
 export default App
+
+// The guide is decoration: load it after the page is interactive so it never competes with the first paint.
+function LateGuide() {
+  const [ready, setReady] = useState(false)
+  useEffect(() => {
+    const go = () => setReady(true)
+    const w: Window = window
+    if (typeof w.requestIdleCallback === 'function') { const id = w.requestIdleCallback(go, { timeout: 2500 }); return () => w.cancelIdleCallback(id) }
+    const id = w.setTimeout(go, 1200); return () => w.clearTimeout(id)
+  }, [])
+  return ready ? <Suspense fallback={null}><CharacterGuide /></Suspense> : null
+}
