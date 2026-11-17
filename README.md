@@ -26,7 +26,7 @@ El comando de build genera HTML, CSS, JavaScript e imágenes en `dist/`. No hace
 
 Si el sitio está conectado a GitHub como aplicación Vite, configura la rama que publica el sitio, Node.js 22, npm, `npm run build` como comando de compilación y `dist` como directorio de salida. El push a esa rama activa el despliegue cuando está configurado el despliegue automático. La raíz del proyecto es la carpeta que contiene `package.json`.
 
-En un alojamiento estático, compila el sitio y publica el contenido de `dist/` en `public_html/`. Clonar el código fuente por sí solo no ejecuta la compilación. El personaje se ejecuta en el navegador y no necesita variables de entorno, servidor de animación ni API externa.
+**Publicación.** `main` guarda el código. Cada push a `main` ejecuta `.github/workflows/deploy.yml`, que compila el sitio (`npm run build`) y publica el resultado en la rama `compiled`. Hostinger está conectado a `compiled` con despliegue automático hacia `public_html/`; su plan no ejecuta la compilación, por eso no se conecta a `main`. Sin Hostinger, basta con subir el contenido de `dist/` a `public_html/`. El personaje se ejecuta en el navegador y no necesita variables de entorno, servidor de animación ni API externa.
 
 ## SEO y vista previa al compartir
 
