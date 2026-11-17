@@ -19,7 +19,9 @@ const EXTRAS: Clip[] = ['thumbs', 'laptop']
 const FADE = .18
 const still = (name: Clip) => `${BASE}${name}.webp`
 
-const alphaVideo = typeof navigator !== 'undefined' && !/^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent)
+// Every browser on iPhone/iPad (Chrome and Firefox included) runs on WebKit, which draws transparent WebM with a solid background.
+const onApple = typeof navigator !== 'undefined' && (/iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1))
+const alphaVideo = typeof navigator !== 'undefined' && !onApple && !/^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent)
 
 function createVideoRig(host: HTMLDivElement, lean: HTMLDivElement): Rig {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)')
