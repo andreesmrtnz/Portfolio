@@ -1,16 +1,37 @@
 {
   "name": "portfolio-andres-martinez",
   "version": "1.0.0",
-  "description": "Portfolio de Andrés Martínez - Estudiante de Ingeniería Informática",
-  "main": "index.html",
+  "type": "module",
+  "description": "Portfolio profesional de Andrés Martínez Lorca",
   "scripts": {
-    "build-css": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --watch",
-    "build-production": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --minify"
+    "dev": "vite",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview"
   },
-  "keywords": ["portfolio", "tailwindcss", "javascript"],
+  "keywords": [
+    "portfolio",
+    "react",
+    "typescript",
+    "gsap",
+    "javascript"
+  ],
   "author": "Andrés Martínez",
   "license": "MIT",
   "devDependencies": {
-    "tailwindcss": "^3.4.0"
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@types/three": "^0.187.0",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.72.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "simple-icons": "^16.37.0",
+    "three": "^0.187.0"
   }
-} 
+}

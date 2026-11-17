@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- Social preview card (1200 x 630). Open it in a browser and screenshot it at that size to regenerate public/og-image.jpg -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: Bricolage; src: url('../public/fonts/bricolage.woff2') format('woff2'); font-weight: 200 800; }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body { font-family: Bricolage, sans-serif; color: #222a23; background: #f8f8f3; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; padding: 64px 72px; -webkit-font-smoothing: antialiased; }
+  .rule { width: 72px; height: 6px; border-radius: 3px; background: #3b6349; margin-bottom: 34px; }
+  h1 { font-size: 92px; line-height: .98; font-weight: 670; letter-spacing: -.04em; }
+  h2 { margin-top: 22px; font-size: 35px; white-space: nowrap; font-weight: 500; letter-spacing: -.02em; color: #3b6349; }
+  .stack { margin-top: 38px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .stack span { padding: 9px 16px; border: 1.5px solid #cdd3c6; border-radius: 8px; font-size: 23px; font-weight: 500; background: #fff; }
+  .where { margin-top: 38px; font-size: 25px; color: #515b52; }
+  .photo { width: 420px; height: 470px; border-radius: 22px; overflow: hidden; box-shadow: 0 30px 60px #22402a30; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="rule"></div>
+    <h1>Andrés<br>Martínez</h1>
+    <h2>Ingeniero de software full-stack</h2>
+    <div class="stack"><span>React</span><span>TypeScript</span><span>Node.js</span><span>.NET</span><span>Shopify</span><span>IA aplicada</span></div>
+    <p class="where">Murcia, España · andresmartinezlorca.com</p>
+  </div>
+  <div class="photo"><img src="../assets/images/yo.jpg" alt=""></div>
+</body>
+</html>
