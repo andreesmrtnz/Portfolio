@@ -1,0 +1,23 @@
+# Una sola dirección por página: https y sin www.
+# Así Google no ve el mismo contenido en cuatro URL distintas (http, https, www y sin www).
+RewriteEngine On
+
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://andresmartinezlorca.com%{REQUEST_URI} [L,R=301]
+
+# /index.html y /cv/index.html son la misma página que / y /cv/
+RewriteCond %{THE_REQUEST} \s/(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ /$1 [L,R=301]
+
+# Página 404 propia
+ErrorDocument 404 /404.html
+
+# Cabeceras de seguridad (también las miran los auditores de SEO técnico)
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
